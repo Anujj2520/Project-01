@@ -1,1305 +1,890 @@
-/* =========================================================
-   CALCULATOR — WEBSITE THEME
-   Dark • Glass • Neon • Modern
-   ========================================================= */
+/* ==========================================================================
+   Casio fx-991CW ClassWiz - ECE (Electronics & Communication Eng.) Edition
+   High-Tech PCB Lab Aesthetics, Oscilloscope Display, & Hardware Back Controls
+   ========================================================================== */
 
 :root {
-  --calc-bg: #080b14;
-  --calc-card: rgba(15, 23, 42, 0.88);
-  --calc-card-2: rgba(20, 30, 52, 0.92);
-
-  --primary: #38bdf8;
-  --primary-2: #6366f1;
-  --accent: #facc15;
-
-  --green: #22c55e;
-  --red: #ef4444;
-
-  --text: #f8fafc;
-  --muted: #94a3b8;
-
-  --border: rgba(148, 163, 184, 0.18);
-
-  --glow-blue: rgba(56, 189, 248, 0.25);
-  --glow-purple: rgba(99, 102, 241, 0.25);
+  --pcb-bg: #0b111a;
+  --pcb-surface: #111a28;
+  --pcb-surface-end: #090e17;
+  --copper-trace: #d97706;
+  --copper-glow: rgba(245, 158, 11, 0.4);
+  --cyan-led: #06b6d4;
+  --cyan-glow: rgba(6, 182, 212, 0.5);
+  --emerald-led: #10b981;
+  --gold-pad: #eab308;
+  
+  /* LCD Oscilloscope Cyan / Phosphor default */
+  --lcd-bg-start: #04252b;
+  --lcd-bg-end: #02161a;
+  --lcd-pixel: #38bdf8;
+  --lcd-pixel-glow: rgba(56, 189, 248, 0.6);
+  
+  --key-fn-bg: #141f2e;
+  --key-fn-hover: #1c2a3e;
+  --key-num-bg: #e2e8f0;
+  --key-num-hover: #ffffff;
+  --key-num-color: #0f172a;
+  --key-action-bg: #1e293b;
+  --key-action-hover: #334155;
+  --shift-amber: #f59e0b;
+  --alpha-coral: #fb7185;
+  --exe-cyan: #0284c7;
+  --exe-cyan-hover: #0369a1;
+  --back-gold: #b45309;
+  --back-gold-hover: #d97706;
+  --ac-red: #be123c;
+  --ac-red-hover: #e11d48;
+  --del-red: #dc2626;
+  --del-red-hover: #ef4444;
 }
 
-/* =========================================================
-   GLOBAL
-   ========================================================= */
+/* Phosphor Green Theme Override */
+body[data-lcd-theme="phosphor"] {
+  --lcd-bg-start: #062414;
+  --lcd-bg-end: #02140a;
+  --lcd-pixel: #4ade80;
+  --lcd-pixel-glow: rgba(74, 222, 128, 0.6);
+}
+
+/* Classic Casio Grey LCD Override */
+body[data-lcd-theme="classic"] {
+  --lcd-bg-start: #9dae95;
+  --lcd-bg-end: #aabda2;
+  --lcd-pixel: #162416;
+  --lcd-pixel-glow: none;
+}
+
+/* Amber OLED Override */
+body[data-lcd-theme="amber"] {
+  --lcd-bg-start: #261704;
+  --lcd-bg-end: #140b02;
+  --lcd-pixel: #fbbf24;
+  --lcd-pixel-glow: rgba(251, 191, 36, 0.6);
+}
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  min-height: 100vh;
-
+  font-family: 'JetBrains Mono', 'Plus Jakarta Sans', monospace, sans-serif;
+  background-color: #06090e;
+  background-image: 
+    radial-gradient(rgba(6, 182, 212, 0.08) 1px, transparent 1px),
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 24px 24px, 48px 48px, 48px 48px;
+  color: #f1f5f9;
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-
-  padding: 25px 12px;
-
-  font-family: "Plus Jakarta Sans", sans-serif;
-
-  color: var(--text);
-
-  background:
-    radial-gradient(
-      circle at 15% 20%,
-      rgba(56, 189, 248, 0.12),
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 85% 80%,
-      rgba(99, 102, 241, 0.15),
-      transparent 30%
-    ),
-    #050811;
+  justify-content: center;
+  overflow: hidden;
+  padding: 6px;
 }
 
-/* =========================================================
-   MAIN CALCULATOR
-   ========================================================= */
-
+/* Calculator Outer PCB Chassis */
 .calc-chassis {
   position: relative;
-
-  width: min(500px, 100%);
-
-  padding: 22px;
-
-  border: 1px solid var(--border);
-
-  border-radius: 26px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(15, 23, 42, 0.96),
-      rgba(7, 12, 25, 0.96)
-    );
-
-  box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.65),
-    0 0 45px rgba(56, 189, 248, 0.08);
-
-  backdrop-filter: blur(20px);
-
-  overflow: hidden;
+  width: 100%;
+  max-width: 392px;
+  height: 98vh;
+  max-height: 720px;
+  background: linear-gradient(155deg, var(--pcb-surface) 0%, #0d1420 50%, var(--pcb-surface-end) 100%);
+  border-radius: 32px;
+  border: 1.5px solid #1e293b;
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.95), 
+    0 0 20px rgba(6, 182, 212, 0.12),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15),
+    inset 0 0 0 2px #0f172a;
+  padding: 10px 13px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-/* Neon border glow */
-
-.calc-chassis::before {
-  content: "";
-
+/* PCB Decorative Silk-Screen Trace Marks */
+.pcb-trace-left {
   position: absolute;
-
-  inset: -2px;
-
-  border-radius: inherit;
-
-  pointer-events: none;
-
-  background:
-    linear-gradient(
-      120deg,
-      rgba(56, 189, 248, 0.5),
-      transparent 30%,
-      transparent 70%,
-      rgba(99, 102, 241, 0.45)
-    );
-
-  opacity: 0.45;
-
-  z-index: -1;
+  top: 48px;
+  left: 6px;
+  width: 2px;
+  height: 60px;
+  background: linear-gradient(180deg, var(--copper-trace), transparent);
+  opacity: 0.6;
 }
 
-/* =========================================================
-   HEADER
-   ========================================================= */
+.pcb-test-point {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 7px;
+  color: #64748b;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
 
+.tp-pad {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold-pad);
+  box-shadow: 0 0 4px var(--gold-pad);
+}
+
+/* Top Hardware Strip */
 .top-strip {
   display: flex;
-
-  justify-content: space-between;
   align-items: center;
-
-  padding: 2px 4px 18px;
+  justify-content: space-between;
+  padding: 0 2px 3px 2px;
 }
 
 .brand-title {
-  font-family: "Plus Jakarta Sans", sans-serif;
-
-  font-size: 24px;
+  font-family: 'JetBrains Mono', monospace;
   font-weight: 800;
-
+  font-size: 11px;
   letter-spacing: 2px;
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
 
-  background:
-    linear-gradient(
-      90deg,
-      #ffffff,
-      #38bdf8
-    );
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.ece-badge {
+  background: #0369a1;
+  color: #38bdf8;
+  border: 1px solid #0284c7;
+  font-size: 7.5px;
+  font-weight: 800;
+  padding: 1px 4px;
+  border-radius: 3px;
+  letter-spacing: 0.8px;
+  text-shadow: 0 0 6px var(--cyan-glow);
 }
 
 .model-title {
-  margin-top: 4px;
-
-  color: var(--muted);
-
-  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
   font-weight: 700;
-
-  letter-spacing: 1px;
+  color: var(--cyan-led);
+  letter-spacing: 0.5px;
 }
 
 .model-title span {
-  color: var(--primary);
-
-  font-size: 8px;
+  color: #94a3b8;
+  font-weight: 400;
 }
 
-/* =========================================================
-   SOLAR PANEL
-   ========================================================= */
-
+/* Photovoltaic Solar Strip with Circuit Gold Accents */
 .solar-panel {
-  width: 105px;
-
-  padding: 7px;
-
-  border: 1px solid rgba(56, 189, 248, 0.25);
-
-  border-radius: 8px;
-
-  background:
-    rgba(2, 6, 23, 0.75);
-
-  box-shadow:
-    inset 0 0 15px rgba(56, 189, 248, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: linear-gradient(180deg, #1c1308 0%, #0c0803 100%);
+  border: 1px solid rgba(217, 119, 6, 0.5);
+  padding: 2px 5px;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.9), 0 0 5px rgba(217, 119, 6, 0.2);
 }
 
 .solar-cells {
   display: grid;
-
   grid-template-columns: repeat(4, 1fr);
-
-  gap: 2px;
-
-  height: 25px;
+  gap: 1.5px;
+  width: 44px;
+  height: 11px;
 }
 
 .solar-cell {
-  border: 1px solid #172554;
-
-  border-radius: 2px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #172554,
-      #0f172a
-    );
+  background: rgba(146, 64, 14, 0.7);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: 1px;
 }
 
 .solar-label {
-  display: block;
-
-  margin-top: 4px;
-
-  color: #64748b;
-
-  text-align: center;
-
-  font-family: monospace;
-
-  font-size: 6px;
+  font-size: 6.5px;
+  font-weight: 800;
+  color: #f59e0b;
+  letter-spacing: 0.5px;
 }
 
-/* =========================================================
-   LCD
-   ========================================================= */
-
+/* High-Resolution Natural Textbook LCD Bezel */
 .lcd-bezel {
-  padding: 9px;
-
-  margin-bottom: 18px;
-
-  border: 1px solid rgba(56, 189, 248, 0.22);
-
-  border-radius: 15px;
-
-  background:
-    rgba(2, 6, 23, 0.8);
-
-  box-shadow:
-    0 0 25px rgba(56, 189, 248, 0.08),
-    inset 0 0 20px rgba(0, 0, 0, 0.7);
+  position: relative;
+  width: 100%;
+  height: 108px;
+  background: #070b10;
+  border-radius: 10px;
+  padding: 3px;
+  box-shadow: 
+    inset 0 3px 6px rgba(0, 0, 0, 0.95), 
+    0 1px 1px rgba(255, 255, 255, 0.08),
+    0 0 12px rgba(6, 182, 212, 0.08);
+  border: 1.5px solid #1e293b;
 }
 
 .lcd-screen {
-  min-height: 110px;
-
-  padding: 10px 12px;
-
-  border: 1px solid rgba(74, 222, 128, 0.3);
-
-  border-radius: 9px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #17251f,
-      #0c1714
-    );
-
-  color: #9affb7;
-
-  font-family: "JetBrains Mono", monospace;
-
-  box-shadow:
-    inset 0 0 20px rgba(34, 197, 94, 0.08),
-    0 0 18px rgba(34, 197, 94, 0.05);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, var(--lcd-bg-start) 0%, var(--lcd-bg-end) 100%);
+  border-radius: 7px;
+  padding: 3px 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--lcd-pixel);
+  font-family: 'JetBrains Mono', monospace;
+  box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
 }
 
+/* Indicators Bar */
 .lcd-indicators {
   display: flex;
-
-  justify-content: space-between;
-
   align-items: center;
-
-  min-height: 18px;
-
+  justify-content: space-between;
   font-size: 8px;
+  font-weight: 800;
+  line-height: 1;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+  padding-bottom: 2px;
+  height: 13px;
 }
 
 .indicator-tags {
   display: flex;
-
-  gap: 6px;
+  gap: 4px;
 }
 
 .ind-badge {
-  font-family: monospace;
-
-  font-size: 8px;
+  padding: 0 2px;
+  border-radius: 2px;
+  font-size: 7px;
+  font-weight: 900;
+  border: 1px solid transparent;
 }
 
 .ind-badge.active {
-  color: #86efac;
-
-  text-shadow:
-    0 0 8px rgba(34, 197, 94, 0.6);
+  background: var(--lcd-pixel);
+  color: var(--lcd-bg-end);
+  border-color: var(--lcd-pixel);
+  box-shadow: 0 0 4px var(--lcd-pixel-glow);
 }
 
 .ind-badge.inactive {
-  opacity: 0.2;
+  opacity: 0.15;
 }
 
+/* Expression Line with Oscilloscope Scanline Effect */
 .lcd-expr-line {
-  min-height: 37px;
-
-  display: flex;
-
-  align-items: center;
-
-  color: #b8ffc9;
-
-  font-size: 16px;
-
-  white-space: nowrap;
-
+  height: 38px;
   overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  scrollbar-width: none;
+  text-shadow: 0 0 5px var(--lcd-pixel-glow);
 }
 
-.lcd-result-line {
-  min-height: 35px;
-
-  display: flex;
-
-  justify-content: flex-end;
-
-  align-items: center;
-
-  color: #d1ffd9;
-
-  font-size: 25px;
-  font-weight: 700;
-
-  white-space: nowrap;
-
-  overflow-x: auto;
+.lcd-expr-line::-webkit-scrollbar {
+  display: none;
 }
 
 .expr-cursor {
+  display: inline-block;
   width: 2px;
-  height: 20px;
-
-  background: #4ade80;
-
-  animation: cursorBlink 1s infinite;
-
-  box-shadow:
-    0 0 8px #4ade80;
+  height: 15px;
+  background-color: var(--lcd-pixel);
+  box-shadow: 0 0 6px var(--lcd-pixel);
+  animation: blink 0.9s infinite steps(2, start);
+  vertical-align: middle;
+  margin: 0 1px;
 }
 
-@keyframes cursorBlink {
-  50% {
-    opacity: 0;
+@keyframes blink {
+  to {
+    visibility: hidden;
   }
 }
 
-/* =========================================================
-   SYSTEM BUTTON ROW
-   ========================================================= */
-
-.sys-row {
-  display: grid;
-
-  grid-template-columns: repeat(4, 1fr);
-
-  gap: 8px;
-
-  margin-bottom: 17px;
+/* Result Line */
+.lcd-result-line {
+  height: 40px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  text-shadow: 0 0 8px var(--lcd-pixel-glow);
 }
 
-/* =========================================================
-   BUTTON WRAPPER
-   ========================================================= */
+.lcd-result-line::-webkit-scrollbar {
+  display: none;
+}
+
+.lcd-error {
+  font-size: 14px;
+  font-weight: 800;
+  color: #f43f5e;
+  text-shadow: 0 0 8px rgba(244, 63, 94, 0.6);
+}
+
+/* ECE SI Prefix Toolbar */
+.ece-si-toolbar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+  padding: 2px 0;
+}
+
+.si-btn {
+  background: #0f1a29;
+  border: 1px solid #1e3a5f;
+  color: #38bdf8;
+  font-size: 8px;
+  font-weight: 800;
+  padding: 2px 0;
+  border-radius: 4px;
+  text-align: center;
+  transition: all 0.08s ease;
+}
+
+.si-btn:hover {
+  background: #1e3a8a;
+  color: #fff;
+  border-color: #38bdf8;
+}
+
+.si-btn:active {
+  transform: translateY(1px);
+}
+
+/* Base Buttons & Tactile Keycaps */
+button {
+  border: none;
+  outline: none;
+  font-family: inherit;
+  cursor: pointer;
+}
 
 .btn-wrapper {
-  min-width: 0;
-
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
+  width: 100%;
 }
 
-.key-shift-label,
-.key-alpha-label {
-  min-height: 11px;
-
-  margin-bottom: 3px;
-
-  font-family: "JetBrains Mono", monospace;
-
-  font-size: 7px;
-  font-weight: 700;
-
-  color: var(--accent);
-
+.key-shift-label {
+  font-size: 7.5px;
+  font-weight: 800;
+  color: var(--shift-amber);
+  height: 9px;
+  line-height: 9px;
+  text-align: center;
   white-space: nowrap;
 }
 
 .key-alpha-label {
-  color: #4ade80;
+  font-size: 7.5px;
+  font-weight: 800;
+  color: var(--alpha-coral);
+  height: 9px;
+  line-height: 9px;
+  text-align: center;
+  white-space: nowrap;
 }
 
-/* =========================================================
-   ALL BUTTONS
-   ========================================================= */
-
 .c-btn {
-  position: relative;
-
   width: 100%;
-
-  min-height: 36px;
-
-  border: 1px solid rgba(148, 163, 184, 0.18);
-
-  border-radius: 8px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(51, 65, 85, 0.9),
-      rgba(15, 23, 42, 0.95)
-    );
-
-  color: #e2e8f0;
-
-  font-family: "JetBrains Mono", monospace;
-
-  font-size: 10px;
+  height: 26px;
+  border-radius: 6px;
+  background: var(--key-fn-bg);
+  color: #f1f5f9;
+  font-size: 9.5px;
   font-weight: 700;
-
-  cursor: pointer;
-
-  box-shadow:
-    0 4px 10px rgba(0, 0, 0, 0.35),
-    inset 0 1px rgba(255,255,255,0.05);
-
-  transition:
-    transform .12s ease,
-    border-color .12s ease,
-    box-shadow .12s ease,
-    background .12s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid #070d14;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 3px 0 #070d14, 0 3px 5px rgba(0, 0, 0, 0.5);
+  transition: transform 0.06s ease, box-shadow 0.06s ease, background-color 0.06s ease;
 }
 
 .c-btn:hover {
-  border-color: rgba(56, 189, 248, 0.55);
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(51, 65, 85, 1),
-      rgba(30, 41, 59, 1)
-    );
-
-  box-shadow:
-    0 0 15px rgba(56, 189, 248, 0.15);
+  background: var(--key-fn-hover);
 }
 
 .c-btn:active {
-  transform: translateY(2px) scale(.98);
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #070d14, 0 1px 2px rgba(0, 0, 0, 0.6);
 }
-
-/* =========================================================
-   PILL BUTTONS
-   ========================================================= */
 
 .c-btn-pill {
-  border-radius: 20px;
+  border-radius: 13px;
+  height: 27px;
 }
 
-/* =========================================================
-   SHIFT
-   ========================================================= */
-
-.btn-shift {
-  color: var(--accent);
-
-  border-color: rgba(250, 204, 21, 0.25);
-}
-
-.btn-shift:hover {
-  border-color: rgba(250, 204, 21, 0.7);
-
-  box-shadow:
-    0 0 15px rgba(250, 204, 21, 0.15);
-}
-
-/* =========================================================
-   ALPHA
-   ========================================================= */
-
-.btn-alpha {
-  color: #4ade80;
-
-  border-color: rgba(74, 222, 128, 0.25);
-}
-
-.btn-alpha:hover {
-  border-color: rgba(74, 222, 128, 0.7);
-
-  box-shadow:
-    0 0 15px rgba(74, 222, 128, 0.15);
-}
-
-/* =========================================================
-   NAVIGATION CLUSTER
-   ========================================================= */
-
-.cluster-section {
+/* System Functions Row (SETTINGS, VARIABLES, FORMAT, CATALOG) */
+.sys-row {
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  padding-top: 2px;
+}
 
-  grid-template-columns: 1fr 1.25fr 1fr;
-
+/* Center Cluster (HOME / BACK / D-PAD / SHIFT / ALPHA) */
+.cluster-section {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-
-  gap: 10px;
-
-  margin-bottom: 17px;
+  padding: 2px 1px;
 }
 
 .cluster-left,
 .cluster-right {
   display: flex;
-
   flex-direction: column;
-
-  gap: 7px;
+  gap: 4px;
+  width: 60px;
 }
 
-/* =========================================================
-   DPAD
-   ========================================================= */
+/* Enhanced Dedicated BACK Button */
+.c-btn-back {
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  border: 1px solid #f59e0b;
+  color: #fde68a !important;
+  font-weight: 800 !important;
+  box-shadow: 0 2px 0 #0a0f18, 0 0 6px rgba(245, 158, 11, 0.3) !important;
+}
 
+.c-btn-back:hover {
+  background: #292524 !important;
+  color: #ffffff !important;
+  border-color: #fbbf24 !important;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.6) !important;
+}
+
+/* ClassWiz Circular D-Pad Controller */
 .dpad-container {
   position: relative;
-
-  width: 88px;
-  height: 88px;
-
-  margin: auto;
-
-  border: 1px solid rgba(56, 189, 248, 0.25);
-
+  width: 86px;
+  height: 86px;
+  background: #0f172a;
   border-radius: 50%;
-
-  background:
-    radial-gradient(
-      circle,
-      #263449 0%,
-      #131c2b 60%,
-      #080d17 100%
-    );
-
-  box-shadow:
-    0 0 25px rgba(56, 189, 248, 0.08),
-    inset 0 0 15px rgba(0,0,0,.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #1e3a5f;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.7), inset 0 1px 2px rgba(255, 255, 255, 0.1);
 }
 
-.dpad-arrow,
-.dpad-ok {
+.dpad-arrow {
   position: absolute;
-
-  border: 0;
-
-  background: transparent;
-
-  color: #cbd5e1;
-
-  cursor: pointer;
+  background: #1e293b;
+  border-radius: 4px;
+  color: #f1f5f9;
+  border: 1px solid #334155;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8.5px;
+  font-weight: bold;
+  transition: all 0.08s ease;
 }
 
-.dpad-arrow:hover {
-  color: var(--primary);
-
-  text-shadow:
-    0 0 10px var(--primary);
+.dpad-arrow:active {
+  background: #0284c7;
+  color: #fff;
+  border-color: #38bdf8;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
 }
 
-.dpad-up {
-  top: 5px;
-  left: 28px;
-}
-
-.dpad-down {
-  bottom: 5px;
-  left: 28px;
-}
-
-.dpad-left {
-  left: 5px;
-  top: 28px;
-}
-
-.dpad-right {
-  right: 5px;
-  top: 28px;
-}
+.dpad-up { top: 3px; width: 26px; height: 20px; color: var(--shift-amber); }
+.dpad-down { bottom: 3px; width: 26px; height: 20px; color: var(--shift-amber); }
+.dpad-left { left: 3px; width: 20px; height: 26px; color: var(--cyan-led); }
+.dpad-right { right: 3px; width: 20px; height: 26px; color: var(--cyan-led); }
 
 .dpad-ok {
-  top: 26px;
-  left: 26px;
-
-  width: 36px;
-  height: 36px;
-
-  border: 1px solid rgba(56,189,248,.3);
-
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-
-  background:
-    linear-gradient(
-      145deg,
-      #334155,
-      #111827
-    );
-
-  color: #f8fafc;
-
-  font-size: 9px;
-
-  box-shadow:
-    0 0 12px rgba(56,189,248,.08);
+  background: #111e30;
+  border: 1.5px solid #0284c7;
+  color: #38bdf8;
+  font-size: 9.5px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.15), 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
-/* =========================================================
-   FUNCTION GRID
-   ========================================================= */
+.dpad-ok:active {
+  transform: scale(0.94);
+  background: #0369a1;
+  color: #fff;
+}
 
+/* Shift & Alpha States */
+.btn-shift {
+  background: #92400e;
+  color: #fef3c7;
+  border: 1px solid #b45309;
+}
+.btn-shift.active {
+  background: var(--shift-amber);
+  color: #0f172a;
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.9);
+}
+
+.btn-alpha {
+  background: #881337;
+  color: #ffe4e6;
+  border: 1px solid #9f1239;
+}
+.btn-alpha.active {
+  background: var(--alpha-coral);
+  color: #fff;
+  box-shadow: 0 0 12px rgba(251, 113, 133, 0.9);
+}
+
+/* Function Keypad Grid */
 .func-grid {
   display: grid;
-
   grid-template-columns: repeat(6, 1fr);
-
-  gap: 7px;
-
-  margin-bottom: 10px;
+  gap: 3.5px;
+  padding: 1px 0;
 }
 
-/* =========================================================
-   NUMBER PAD
-   ========================================================= */
-
+/* Numeric & Primary Keypad Grid */
 .num-grid {
   display: grid;
-
   grid-template-columns: repeat(4, 1fr);
-
-  gap: 8px;
+  gap: 4.5px;
+  padding-top: 2px;
 }
 
 .c-btn-num {
-  min-height: 43px;
-
-  font-size: 14px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(30, 41, 59, 1),
-      rgba(15, 23, 42, 1)
-    );
+  height: 33px;
+  background: var(--key-num-bg);
+  color: var(--key-num-color);
+  font-size: 15px;
+  font-weight: 700;
+  border-bottom: 2px solid #cbd5e1;
+}
+.c-btn-num:hover {
+  background: var(--key-num-hover);
 }
 
 .c-btn-action {
-  min-height: 43px;
-
-  color: #7dd3fc;
+  height: 33px;
+  background: var(--key-action-bg);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+}
+.c-btn-action:hover {
+  background: var(--key-action-hover);
 }
 
 .c-btn-del {
-  min-height: 43px;
-
-  color: #fda4af;
+  background: var(--del-red);
+  color: #fff;
+  font-size: 11.5px;
+  font-weight: 800;
+}
+.c-btn-del:hover {
+  background: var(--del-red-hover);
 }
 
 .c-btn-ac {
-  min-height: 43px;
-
-  color: #fecaca;
-
-  border-color: rgba(239,68,68,.3);
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(127,29,29,.8),
-      rgba(69,10,10,.9)
-    );
+  background: var(--ac-red);
+  color: #fff;
+  font-size: 11.5px;
+  font-weight: 800;
+}
+.c-btn-ac:hover {
+  background: var(--ac-red-hover);
 }
 
 .c-btn-exe {
-  min-height: 43px;
-
-  color: #111827;
-
-  border-color: rgba(250,204,21,.5);
-
-  background:
-    linear-gradient(
-      145deg,
-      #fde047,
-      #eab308
-    );
-
-  box-shadow:
-    0 0 18px rgba(250,204,21,.15);
+  background: var(--exe-cyan);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 900;
+  box-shadow: 0 3px 0 #0369a1, 0 3px 8px rgba(2, 132, 199, 0.5);
+  border: 1px solid #38bdf8;
 }
-
 .c-btn-exe:hover {
-  background:
-    linear-gradient(
-      145deg,
-      #fef08a,
-      #facc15
-    );
-
-  box-shadow:
-    0 0 25px rgba(250,204,21,.3);
+  background: var(--exe-cyan-hover);
+  box-shadow: 0 3px 0 #0369a1, 0 0 12px rgba(56, 189, 248, 0.8);
 }
 
-/* =========================================================
-   BOTTOM ACCENT
-   ========================================================= */
-
-.calc-chassis > div[style*="opacity"] {
-  margin-top: 8px;
-
-  opacity: 1 !important;
-}
-
-.calc-chassis > div[style*="opacity"] > div {
-  width: 70px !important;
-  height: 3px !important;
-
-  background:
-    linear-gradient(
-      90deg,
-      var(--primary),
-      var(--primary-2)
-    ) !important;
-
-  box-shadow:
-    0 0 12px rgba(56,189,248,.6);
-}
-
-/* =========================================================
-   MODALS
-   ========================================================= */
-
+/* Modals & Overlays */
 .modal-overlay {
-  position: fixed;
-
+  position: absolute;
   inset: 0;
-
-  z-index: 999;
-
-  width: min(480px, calc(100% - 20px));
-
-  max-height: 90vh;
-
-  margin: auto;
-
+  z-index: 50;
+  background: rgba(10, 15, 24, 0.97);
+  backdrop-filter: blur(10px);
+  border-radius: 28px;
+  padding: 12px;
   display: flex;
-
   flex-direction: column;
-
-  border: 1px solid rgba(56,189,248,.3);
-
-  border-radius: 18px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(15,23,42,.98),
-      rgba(5,10,20,.98)
-    );
-
-  box-shadow:
-    0 30px 80px rgba(0,0,0,.75),
-    0 0 40px rgba(56,189,248,.1);
-
-  backdrop-filter: blur(20px);
-
-  overflow: hidden;
-
-  animation: modalIn .18s ease;
+  animation: fadeIn 0.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  border: 1.5px solid #1e3a5f;
+  box-shadow: inset 0 0 30px rgba(6, 182, 212, 0.1);
 }
-
-@keyframes modalIn {
-  from {
-    opacity: 0;
-    transform: scale(.95) translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-.modal-overlay::before {
-  content: "";
-
-  position: fixed;
-
-  inset: 0;
-
-  z-index: -1;
-
-  background: rgba(0,0,0,.72);
-
-  backdrop-filter: blur(5px);
-}
-
-/* =========================================================
-   MODAL HEADER
-   ========================================================= */
 
 .modal-header {
   display: flex;
-
-  justify-content: space-between;
-
   align-items: center;
-
-  padding: 13px 15px;
-
-  border-bottom: 1px solid var(--border);
-
-  background:
-    rgba(15,23,42,.95);
+  justify-content: space-between;
+  border-bottom: 1px solid #1e293b;
+  padding-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .modal-title {
-  color: #f8fafc;
-
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
-
-  letter-spacing: .5px;
+  color: var(--cyan-led);
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.modal-close-btn {
-  padding: 5px 9px;
-
-  border: 1px solid rgba(56,189,248,.25);
-
-  border-radius: 6px;
-
-  background: #111827;
-
-  color: var(--primary);
-
-  font-family: monospace;
-
-  font-size: 9px;
-
+.modal-back-btn {
+  background: #1e293b;
+  color: #fde68a;
+  border: 1px solid #f59e0b;
+  font-size: 9.5px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 4px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.1s ease;
 }
 
-.modal-close-btn:hover {
-  border-color: var(--primary);
-
-  box-shadow:
-    0 0 10px rgba(56,189,248,.15);
+.modal-back-btn:hover {
+  background: #b45309;
+  color: #fff;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
 }
-
-/* =========================================================
-   MODAL BODY
-   ========================================================= */
 
 .modal-body {
-  padding: 14px;
-
+  flex: 1;
   overflow-y: auto;
+  font-size: 11.5px;
+  padding-right: 2px;
 }
 
 .modal-body::-webkit-scrollbar {
-  width: 5px;
+  width: 4px;
 }
-
 .modal-body::-webkit-scrollbar-thumb {
-  background: #334155;
-
-  border-radius: 10px;
+  background: #1e3a5f;
+  border-radius: 2px;
 }
 
-/* =========================================================
-   MENU CARDS
-   ========================================================= */
-
+/* Menu Grid */
 .menu-grid {
   display: grid;
-
   grid-template-columns: repeat(2, 1fr);
-
-  gap: 9px;
+  gap: 7px;
 }
 
 .menu-card {
-  min-height: 82px;
-
-  padding: 11px;
-
+  background: #111a28;
+  border: 1px solid #1e293b;
+  border-radius: 7px;
+  padding: 8px;
   text-align: left;
-
-  border: 1px solid var(--border);
-
-  border-radius: 10px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(30,41,59,.9),
-      rgba(15,23,42,.9)
-    );
-
-  color: white;
-
-  cursor: pointer;
-
-  transition: .15s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  transition: all 0.1s ease;
 }
 
-.menu-card:hover {
-  transform: translateY(-2px);
-
-  border-color: rgba(56,189,248,.55);
-
-  box-shadow:
-    0 0 18px rgba(56,189,248,.08);
-}
-
-.menu-card.active {
-  border-color: var(--primary);
-
-  box-shadow:
-    inset 0 0 15px rgba(56,189,248,.06),
-    0 0 15px rgba(56,189,248,.08);
+.menu-card:hover, .menu-card.active {
+  border-color: var(--cyan-led);
+  background: #162438;
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
 }
 
 .menu-card-title {
-  display: block;
-
-  margin-bottom: 6px;
-
-  color: #f8fafc;
-
-  font-size: 11px;
   font-weight: 800;
+  font-size: 11px;
+  color: #38bdf8;
 }
 
 .menu-card-desc {
-  color: var(--muted);
-
-  font-size: 8px;
-
-  line-height: 1.5;
+  font-size: 9.5px;
+  color: #94a3b8;
 }
 
-/* =========================================================
-   MODAL BUTTON
-   ========================================================= */
+/* ECE Tool Cards */
+.ece-calc-card {
+  background: #0f172a;
+  border: 1px solid #1e3a5f;
+  border-radius: 7px;
+  padding: 8px;
+  margin-bottom: 8px;
+}
 
-.calc-btn-primary {
-  width: 100%;
-
-  padding: 10px;
-
-  border: 1px solid rgba(56,189,248,.3);
-
-  border-radius: 8px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(37,99,235,.8),
-      rgba(79,70,229,.8)
-    );
-
-  color: white;
-
-  font-family: "JetBrains Mono", monospace;
-
-  font-size: 10px;
+.ece-calc-title {
   font-weight: 800;
-
-  cursor: pointer;
-
-  box-shadow:
-    0 0 15px rgba(59,130,246,.12);
+  color: #f59e0b;
+  font-size: 11px;
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: space-between;
 }
 
-.calc-btn-primary:hover {
-  box-shadow:
-    0 0 25px rgba(59,130,246,.25);
-}
-
-/* =========================================================
-   SETTINGS
-   ========================================================= */
-
+/* Settings Items */
 .setting-row {
   display: flex;
-
-  justify-content: space-between;
-
   align-items: center;
-
-  gap: 10px;
-
-  padding: 11px 0;
-
-  border-bottom: 1px solid var(--border);
-}
-
-.setting-row:last-child {
-  border-bottom: none;
+  justify-content: space-between;
+  background: #111a28;
+  border: 1px solid #1e293b;
+  padding: 6px 8px;
+  border-radius: 6px;
+  margin-bottom: 5px;
 }
 
 .btn-group {
   display: flex;
-
-  gap: 4px;
+  gap: 3px;
 }
 
 .btn-choice {
-  padding: 7px 9px;
-
-  border: 1px solid var(--border);
-
-  border-radius: 6px;
-
-  background: #111827;
-
-  color: var(--muted);
-
-  font-family: monospace;
-
+  background: #0b111a;
+  border: 1px solid #1e293b;
+  color: #94a3b8;
   font-size: 9px;
-  font-weight: 800;
-
-  cursor: pointer;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 4px;
 }
 
-.btn-choice:hover,
 .btn-choice.active {
-  border-color: var(--primary);
-
-  background: rgba(56,189,248,.12);
-
-  color: var(--primary);
-
-  box-shadow:
-    0 0 10px rgba(56,189,248,.08);
+  background: #0284c7;
+  color: #fff;
+  border-color: #38bdf8;
+  box-shadow: 0 0 6px rgba(56, 189, 248, 0.5);
 }
 
-/* =========================================================
-   INPUTS
-   ========================================================= */
+/* Variables Table */
+.var-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
 
+.var-cell {
+  background: #111a28;
+  border: 1px solid #1e293b;
+  border-radius: 6px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.var-name {
+  font-weight: 800;
+  color: var(--alpha-coral);
+  font-size: 10.5px;
+}
+
+.var-val {
+  font-family: monospace;
+  font-size: 10px;
+  color: #f1f5f9;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.var-btn-use {
+  background: #1e293b;
+  color: #cbd5e1;
+  font-size: 8.5px;
+  font-weight: 700;
+  padding: 2px;
+  border-radius: 3px;
+  margin-top: 3px;
+  border: 1px solid #334155;
+}
+
+.var-btn-use:hover {
+  background: var(--cyan-led);
+  color: #000;
+}
+
+/* Input Fields inside Modals */
 .modal-input {
   width: 100%;
-
-  margin-bottom: 8px;
-
-  padding: 9px;
-
-  border: 1px solid var(--border);
-
-  border-radius: 7px;
-
-  outline: none;
-
-  background: #080d18;
-
-  color: #f8fafc;
-
-  font-family: monospace;
-
-  font-size: 10px;
+  background: #0b111a;
+  border: 1px solid #1e3a5f;
+  border-radius: 5px;
+  padding: 5px 7px;
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  margin-bottom: 6px;
 }
 
 .modal-input:focus {
-  border-color: var(--primary);
-
-  box-shadow:
-    0 0 12px rgba(56,189,248,.12);
+  border-color: var(--cyan-led);
+  outline: none;
+  box-shadow: 0 0 6px rgba(6, 182, 212, 0.4);
 }
 
-.modal-input::placeholder {
-  color: #64748b;
-}
-
-/* =========================================================
-   VARIABLE GRID
-   ========================================================= */
-
-.var-grid {
-  display: grid;
-
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 7px;
-}
-
-/* =========================================================
-   TABLE
-   ========================================================= */
-
-#table-output {
-  margin-top: 8px;
-
-  border-radius: 7px;
-
-  overflow: auto;
-}
-
-#table-output table {
+.calc-btn-primary {
   width: 100%;
-
-  border-collapse: collapse;
-
-  font-family: monospace;
-
-  font-size: 9px;
+  background: var(--exe-cyan);
+  color: #fff;
+  font-weight: 800;
+  font-size: 11px;
+  padding: 6px;
+  border-radius: 5px;
+  margin-top: 4px;
+  border: 1px solid #38bdf8;
 }
 
-#table-output th,
-#table-output td {
-  padding: 7px;
-
-  border: 1px solid var(--border);
-
-  text-align: center;
+.calc-btn-primary:hover {
+  background: var(--exe-cyan-hover);
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
 }
 
-#table-output th {
-  color: var(--primary);
-
-  background: #172033;
-}
-
-#table-output td {
-  background: #0d1422;
-}
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 600px) {
-
-  body {
-    padding: 8px 4px;
-
-    align-items: flex-start;
-  }
-
-  .calc-chassis {
-    width: 100%;
-
-    padding: 15px 10px;
-
-    border-radius: 20px;
-  }
-
-  .brand-title {
-    font-size: 20px;
-  }
-
-  .model-title {
-    font-size: 8px;
-  }
-
-  .solar-panel {
-    width: 88px;
-  }
-
-  .sys-row {
-    gap: 5px;
-  }
-
-  .func-grid {
-    gap: 4px;
-  }
-
-  .num-grid {
-    gap: 5px;
-  }
-
-  .c-btn {
-    min-height: 33px;
-
-    font-size: 8px;
-  }
-
-  .c-btn-num,
-  .c-btn-action,
-  .c-btn-del,
-  .c-btn-ac,
-  .c-btn-exe {
-    min-height: 40px;
-  }
-
-  .c-btn-num {
-    font-size: 13px;
-  }
-
-  .cluster-section {
-    gap: 6px;
-  }
-
-  .dpad-container {
-    width: 78px;
-    height: 78px;
-  }
-
-  .dpad-up,
-  .dpad-down {
-    left: 23px;
-  }
-
-  .dpad-left,
-  .dpad-right {
-    top: 23px;
-  }
-
-  .dpad-ok {
-    top: 22px;
-    left: 22px;
-  }
-
-  .menu-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .modal-overlay {
-    width: calc(100% - 14px);
-  }
-}
-
-/* =========================================================
-   SMALL PHONES
-   ========================================================= */
-
-@media (max-width: 380px) {
-
-  .calc-chassis {
-    padding: 12px 7px;
-  }
-
-  .func-grid {
-    gap: 3px;
-  }
-
-  .num-grid {
-    gap: 4px;
-  }
-
-  .sys-row {
-    gap: 3px;
-  }
-
-  .c-btn {
-    min-height: 30px;
-
-    font-size: 7px;
-  }
-
-  .c-btn-num,
-  .c-btn-action,
-  .c-btn-del,
-  .c-btn-ac,
-  .c-btn-exe {
-    min-height: 36px;
-  }
-
-  .key-shift-label,
-  .key-alpha-label {
-    font-size: 6px;
-  }
-}
-
-/* =========================================================
-   ACCESSIBILITY
-   ========================================================= */
-
-button:focus-visible,
-input:focus-visible {
-  outline: 2px solid var(--primary);
-
-  outline-offset: 2px;
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
 }
