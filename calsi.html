@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Casio fx-991CW Scientific Calculator</title>
+    <meta name="description" content="Authentic Casio fx-991CW ClassWiz scientific calculator built with pure HTML, CSS, and JavaScript." />
+    <meta property="og:title" content="Casio fx-991CW Scientific Calculator" />
+    <meta property="og:description" content="Authentic Casio fx-991CW ClassWiz scientific calculator built with pure HTML, CSS, and JavaScript." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="calsi.css">
+  </head>
+  <body>
+    <!-- Main Calculator Shell Container -->
+    <main id="calc-container" class="calc-chassis">
+      
+      <!-- Top Branding & Authentic Photovoltaic Solar Panel Strip -->
+      <header class="top-strip">
+        <div>
+          <div class="brand-title">Scientific Calculator</div>
+          <div class="model-title">Advance Version <span>CLASSWIZ</span></div>
+        </div>
+        <div class="solar-panel" title="Two-Way Solar Power Sensor">
+          <div class="solar-cells">
+            <div class="solar-cell"></div>
+            <div class="solar-cell"></div>
+            <div class="solar-cell"></div>
+            <div class="solar-cell"></div>
+          </div>
+          <span class="solar-label">TWO WAY POWER</span>
+        </div>
+      </header>
+
+      <!-- High-Resolution Natural Textbook LCD Display -->
+      <section class="lcd-bezel" aria-label="Calculator LCD Screen">
+        <div class="lcd-screen">
+          <!-- Status Indicators Line -->
+          <div class="lcd-indicators">
+            <div class="indicator-tags">
+              <span id="ind-s" class="ind-badge inactive">S</span>
+              <span id="ind-a" class="ind-badge inactive">A</span>
+              <span id="ind-m" class="ind-badge inactive">M</span>
+              <span id="ind-angle" class="ind-badge active">DEG</span>
+              <span id="ind-fmt" class="ind-badge active">NORM1</span>
+            </div>
+            <div class="indicator-tags">
+              <span id="ind-mode" class="ind-badge active">CALC</span>
+              <span class="ind-badge active">▮▮</span>
+            </div>
+          </div>
+
+          <!-- Natural Expression Line with Blinking Cursor -->
+          <div id="lcd-expr" class="lcd-expr-line">
+            <span class="expr-cursor"></span>
+          </div>
+
+          <!-- Formatted Computation Result Line -->
+          <div id="lcd-result" class="lcd-result-line">0</div>
+        </div>
+      </section>
+
+      <!-- 1. System Function Keys (SETTINGS, VARIABLE, FORMAT, CATALOG) -->
+      <nav class="sys-row" aria-label="System Functions">
+        <div class="btn-wrapper">
+          <span class="key-shift-label">SETTINGS</span>
+          <button type="button" class="c-btn" data-action="tools">SET</button>
+        </div>
+        <div class="btn-wrapper">
+          <span class="key-shift-label">VARIABLE</span>
+          <button type="button" class="c-btn" data-action="variables">VAR</button>
+        </div>
+        <div class="btn-wrapper">
+          <span class="key-shift-label">FORMAT</span>
+          <button type="button" class="c-btn" style="color:var(--shift-yellow);" data-action="format">FMT</button>
+        </div>
+        <div class="btn-wrapper">
+          <span class="key-shift-label">CATALOG</span>
+          <button type="button" class="c-btn" style="color:var(--shift-yellow);" data-action="catalog">CATALOG</button>
+        </div>
+      </nav>
+
+      <!-- 2. Interactive Middle Cluster (HOME, D-PAD, SHIFT & ALPHA) -->
+      <section class="cluster-section" aria-label="Navigation and Modes">
+        <div class="cluster-left">
+          <div class="btn-wrapper">
+            <span class="key-shift-label">MENU</span>
+            <button type="button" class="c-btn c-btn-pill" style="color:var(--shift-yellow);font-weight:800;" data-action="home">HOME</button>
+          </div>
+          <div class="btn-wrapper">
+            <span class="key-shift-label" style="color:#64748b;">RETURN</span>
+            <button type="button" class="c-btn c-btn-pill" style="color:#cbd5e1;" data-action="back">BACK</button>
+          </div>
+        </div>
+
+        <!-- Casio Signature Circular Directional Pad -->
+        <div class="dpad-container" aria-label="Directional Navigation Pad">
+          <button type="button" class="dpad-arrow dpad-up" data-action="dpad-up" title="Previous History [▲]">▲</button>
+          <button type="button" class="dpad-arrow dpad-down" data-action="dpad-down" title="Next History [▼]">▼</button>
+          <button type="button" class="dpad-arrow dpad-left" data-action="dpad-left" title="Move Cursor Left [◀]">◀</button>
+          <button type="button" class="dpad-arrow dpad-right" data-action="dpad-right" title="Move Cursor Right [▶]">▶</button>
+          <button type="button" class="dpad-ok" data-action="exe" title="Execute [OK]">OK</button>
+        </div>
+
+        <div class="cluster-right">
+          <div class="btn-wrapper">
+            <span class="key-shift-label">YELLOW</span>
+            <button type="button" id="btn-shift" class="c-btn c-btn-pill btn-shift" data-action="shift">SHIFT</button>
+          </div>
+          <div class="btn-wrapper">
+            <span class="key-alpha-label">VARIABLE</span>
+            <button type="button" id="btn-alpha" class="c-btn c-btn-pill btn-alpha" data-action="alpha">ALPHA</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Scientific Function Matrix (6 Columns × 3 Rows) -->
+      <section class="func-grid" aria-label="Scientific Functions">
+        <!-- Row 1 -->
+        <div class="btn-wrapper">
+          <span class="key-shift-label">x!</span>
+          <button type="button" class="c-btn" data-token="^-1" data-shift-token="!">x⁻¹</button>
+        </div>
+        <div class="btn-wrapper">
+          <span class="key-shift-label">³√</span>
+          <button type="button" class="c-btn" data-token="√(" data-shift-token="∛(">√</button>
+        </div>
+        <div class="btn-wrapper">
+          <span class="key-shift-label"></span>
+          <button type="button" class="c-btn" data-token="^2">x²</button>
+        </div>
+        <div class="btn-wrapper">
+          <span class="key-shift-label">ˣ√</span>
+          <button type="button" class="c-btn" data-token="^(">xʸ</button>
+        </div>
+        <div class="btn-wrapper">
+          <span class="key-shift-label">10ˣ</span>
+          <button type="button" class="c-btn" data-token="log(" data-shift-token="10^(">log</button>
+        </div>
+        <div class="btn-wrapper">
+          <span class="key-shift-label">eˣ</span>
+          <button type="button" class="c-btn" data-token="ln(" data-shift-token="e^(">ln</button>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="btn-wrapper">
+          <span class="key-shift-label"></span>
+          <button type="button" class="c-btn" data-token="(-)">(-)</button>
+        </div>
+        <div class="btn-wrapper">
+          <span class="key-shift-label">←</span>
+          <button type="button" class="c-btn" data-token="°">° ' "</button>
+        </div>
+        <div class="btn-wrapper">
+          <span class="key-shift-label">asinh</span>
+          <button type="button" class="c-btn" data-token="sinh(" data-shift-token="asinh(">hyp</button>
+        </div>
+        <div class="btn-wrapper">
+          <span class="key-shift-label">sin⁻¹</span>
+          <button type="button" class="c-btn" data-token="sin(" data-shift-token="asin(">sin</button>
+        </div>
+        <div class="btn-wrapper">
+          <span class="key-shift-label">cos⁻¹</span>
+          <button type="button" class="c-btn" data-token="cos(" data-shift-token="acos(">cos</button>
+        </div>
+        <div class="btn-wrapper">
+          <span class="key-shift-label">tan⁻¹</span>
+          <button type="button" class="c-btn" data-token="tan(" data-shift-token="atan(">tan</button>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="btn-wrapper">
+          <span class="key-shift-label">RCL</span>
+          <button type="button" class="c-btn" data-action="variables">STO</button>
+        </div>
+        <div class="btn-wrapper">
+          <span class="key-shift-label"></span>
+          <button type="button" class="c-btn" data-action="eng">ENG</button>
+        </div>
+        <div class="btn-wrapper">
+          <span class="key-shift-label"></span>
+          <button type="button" class="c-btn" data-token="(">(</button>
+        </div>
+        <div class="btn-wrapper">
+          <span class="key-shift-label"></span>
+          <button type="button" class="c-btn" data-token=")">)</button>
+        </div>
+        <div class="btn-wrapper">
+          <span class="key-shift-label"></span>
+          <button type="button" class="c-btn" style="color:var(--shift-yellow);" data-action="format">S⇔D</button>
+        </div>
+        <div class="btn-wrapper">
+          <span class="key-shift-label">M-</span>
+          <button type="button" class="c-btn" data-action="m-plus">M+</button>
+        </div>
+      </section>
+
+      <!-- 4. Numeric & Primary Keypad (4 Columns × 5 Rows) -->
+      <section class="num-grid" aria-label="Numeric and Arithmetic Pad">
+        <!-- Row 1 -->
+        <button type="button" class="c-btn c-btn-num" data-token="7">7</button>
+        <button type="button" class="c-btn c-btn-num" data-token="8">8</button>
+        <button type="button" class="c-btn c-btn-num" data-token="9">9</button>
+        <button type="button" class="c-btn c-btn-del" data-action="del">DEL</button>
+
+        <!-- Row 2 -->
+        <button type="button" class="c-btn c-btn-num" data-token="4">4</button>
+        <button type="button" class="c-btn c-btn-num" data-token="5">5</button>
+        <button type="button" class="c-btn c-btn-num" data-token="6">6</button>
+        <button type="button" class="c-btn c-btn-ac" data-action="ac">AC</button>
+
+        <!-- Row 3 -->
+        <button type="button" class="c-btn c-btn-num" data-token="1">1</button>
+        <button type="button" class="c-btn c-btn-num" data-token="2">2</button>
+        <button type="button" class="c-btn c-btn-num" data-token="3">3</button>
+        <button type="button" class="c-btn c-btn-action" data-token="×" data-shift-token="P">
+          <span class="key-shift-label" style="display:block;font-size:7.5px;">nPr</span>
+          <span>×</span>
+        </button>
+
+        <!-- Row 4 -->
+        <button type="button" class="c-btn c-btn-num" data-token="0">0</button>
+        <button type="button" class="c-btn c-btn-num" data-token="." data-shift-token="Ran#">
+          <span class="key-shift-label" style="display:block;font-size:7.5px;">Ran#</span>
+          <span>.</span>
+        </button>
+        <button type="button" class="c-btn c-btn-num" style="font-family:monospace;font-size:11px;" data-token="×10^(" data-shift-token="π">
+          <span class="key-shift-label" style="display:block;font-size:7.5px;">π</span>
+          <span>×10ˣ</span>
+        </button>
+        <button type="button" class="c-btn c-btn-action" data-token="÷" data-shift-token="C">
+          <span class="key-shift-label" style="display:block;font-size:7.5px;">nCr</span>
+          <span>÷</span>
+        </button>
+
+        <!-- Row 5 -->
+        <button type="button" class="c-btn c-btn-action" data-token="+">+</button>
+        <button type="button" class="c-btn c-btn-action" data-token="−">−</button>
+        <button type="button" class="c-btn c-btn-action" style="font-family:monospace;font-size:11px;" data-token="Ans" data-shift-token="PreAns">
+          <span class="key-shift-label" style="display:block;font-size:7.5px;">PreAns</span>
+          <span>Ans</span>
+        </button>
+        <button type="button" class="c-btn c-btn-exe" data-action="exe">EXE</button>
+      </section>
+
+      <!-- Bottom Accent -->
+      <div style="display:flex;justify-content:center;opacity:0.25;padding-top:2px;">
+        <div style="width:60px;height:3px;background:#fff;border-radius:2px;"></div>
+      </div>
+
+      <!-- ================= MODAL OVERLAYS ================= -->
+
+      <!-- 1. Home Menu Modal -->
+      <div id="modal-home" class="modal-overlay" style="display:none;">
+        <div class="modal-header">
+          <div class="modal-title">CASIO fx-991CW MAIN MENU</div>
+          <button type="button" class="modal-close-btn" data-close-modal>[BACK]</button>
+        </div>
+        <div class="modal-body">
+          <div class="menu-grid">
+            <button type="button" class="menu-card active" data-calc-mode="calculate">
+              <span class="menu-card-title">1: Calculate</span>
+              <span class="menu-card-desc">Standard arithmetic & scientific functions</span>
+            </button>
+            <button type="button" class="menu-card" data-calc-mode="complex">
+              <span class="menu-card-title">2: Complex</span>
+              <span class="menu-card-desc">Complex numbers & phasor math</span>
+            </button>
+            <button type="button" class="menu-card" data-calc-mode="base-n">
+              <span class="menu-card-title">3: Base-N</span>
+              <span class="menu-card-desc">DEC, HEX, BIN, OCT conversion & logic</span>
+            </button>
+            <button type="button" class="menu-card" data-calc-mode="matrix">
+              <span class="menu-card-title">4: Matrix</span>
+              <span class="menu-card-desc">Determinant, inverse, & algebra</span>
+            </button>
+            <button type="button" class="menu-card" data-calc-mode="table">
+              <span class="menu-card-title">5: Table</span>
+              <span class="menu-card-desc">Function value table f(x), g(x)</span>
+            </button>
+            <button type="button" class="menu-card" data-calc-mode="equation">
+              <span class="menu-card-title">6: Equation</span>
+              <span class="menu-card-desc">Simultaneous & Polynomial solver</span>
+            </button>
+          </div>
+          <button type="button" class="calc-btn-primary" style="margin-top:12px;background:#334155;" data-action="help">
+            📖 View Guide & Keyboard Shortcuts
+          </button>
+        </div>
+      </div>
+
+      <!-- 2. Settings / Tools Modal -->
+      <div id="modal-tools" class="modal-overlay" style="display:none;">
+        <div class="modal-header">
+          <div class="modal-title">SETTINGS & CONFIGURATION</div>
+          <button type="button" class="modal-close-btn" data-close-modal>[BACK]</button>
+        </div>
+        <div class="modal-body">
+          <div class="setting-row">
+            <div>
+              <div style="font-weight:700;">Angle Unit</div>
+              <div style="font-size:10px;color:#94a3b8;">Trigonometric calculations</div>
+            </div>
+            <div class="btn-group">
+              <button type="button" id="btn-angle-deg" class="btn-choice active">DEG</button>
+              <button type="button" id="btn-angle-rad" class="btn-choice">RAD</button>
+              <button type="button" id="btn-angle-gra" class="btn-choice">GRA</button>
+            </div>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <div style="font-weight:700;">Key Click Audio</div>
+              <div style="font-size:10px;color:#94a3b8;">Tactile synthesis sound</div>
+            </div>
+            <button type="button" id="btn-sound-toggle" class="btn-choice active">ON</button>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <div style="font-weight:700;">Reset Memory</div>
+              <div style="font-size:10px;color:#94a3b8;">Restore defaults & clear vars</div>
+            </div>
+            <button type="button" id="btn-factory-reset" class="btn-choice" style="background:#7f1d1d;color:#fff;border-color:#991b1b;">RESET</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Variables Manager Modal -->
+      <div id="modal-variables" class="modal-overlay" style="display:none;">
+        <div class="modal-header">
+          <div class="modal-title">MEMORY VARIABLES (A–F, x, y, z, M, Ans)</div>
+          <button type="button" class="modal-close-btn" data-close-modal>[BACK]</button>
+        </div>
+        <div class="modal-body">
+          <div id="var-grid-container" class="var-grid"></div>
+        </div>
+      </div>
+
+      <!-- 4. Catalog Search Modal -->
+      <div id="modal-catalog" class="modal-overlay" style="display:none;">
+        <div class="modal-header">
+          <div class="modal-title">FUNCTION CATALOG</div>
+          <button type="button" class="modal-close-btn" data-close-modal>[BACK]</button>
+        </div>
+        <input type="text" id="catalog-search" class="modal-input" placeholder="Search functions (sin, nPr, sinh...)" />
+        <div id="catalog-list" class="modal-body"></div>
+      </div>
+
+      <!-- 5. Equation Solver Modal -->
+      <div id="modal-equation" class="modal-overlay" style="display:none;">
+        <div class="modal-header">
+          <div class="modal-title">POLYNOMIAL SOLVER (ax² + bx + c = 0)</div>
+          <button type="button" class="modal-close-btn" data-close-modal>[BACK]</button>
+        </div>
+        <div class="modal-body">
+          <div style="display:flex;gap:6px;">
+            <input type="number" id="quad-a" class="modal-input" placeholder="a" value="1" />
+            <input type="number" id="quad-b" class="modal-input" placeholder="b" value="-5" />
+            <input type="number" id="quad-c" class="modal-input" placeholder="c" value="6" />
+          </div>
+          <button type="button" id="btn-solve-quad" class="calc-btn-primary">SOLVE EQUATION</button>
+          <div id="quad-result" style="background:#1e1e1e;border:1px solid #3a3a3a;padding:8px;border-radius:6px;margin-top:10px;font-family:monospace;font-size:12px;color:#facc15;">
+            Roots will appear here
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Table Mode Modal -->
+      <div id="modal-table" class="modal-overlay" style="display:none;">
+        <div class="modal-header">
+          <div class="modal-title">TABLE GENERATOR f(x)</div>
+          <button type="button" class="modal-close-btn" data-close-modal>[BACK]</button>
+        </div>
+        <div class="modal-body">
+          <input type="text" id="table-fn" class="modal-input" placeholder="f(x) expression (e.g. 2*x + 1)" value="2*x + 1" />
+          <div style="display:flex;gap:6px;">
+            <input type="number" id="table-start" class="modal-input" placeholder="Start" value="1" />
+            <input type="number" id="table-end" class="modal-input" placeholder="End" value="5" />
+            <input type="number" id="table-step" class="modal-input" placeholder="Step" value="1" />
+          </div>
+          <button type="button" id="btn-gen-table" class="calc-btn-primary">GENERATE TABLE</button>
+          <div id="table-output" style="max-height:180px;overflow-y:auto;margin-top:8px;"></div>
+        </div>
+      </div>
+
+      <!-- 7. Help & Shortcuts Guide -->
+      <div id="modal-help" class="modal-overlay" style="display:none;">
+        <div class="modal-header">
+          <div class="modal-title">fx-991CW KEYBOARD SHORTCUTS</div>
+          <button type="button" class="modal-close-btn" data-close-modal>[BACK]</button>
+        </div>
+        <div class="modal-body" style="font-size:11px;line-height:1.6;">
+          <div class="setting-row"><span>Enter / =</span><span style="color:#facc15;font-weight:bold;">[EXE] Solve</span></div>
+          <div class="setting-row"><span>Backspace</span><span style="color:#facc15;font-weight:bold;">[DEL] Delete</span></div>
+          <div class="setting-row"><span>Escape</span><span style="color:#facc15;font-weight:bold;">[AC] Clear</span></div>
+          <div class="setting-row"><span>Arrow Keys</span><span style="color:#facc15;font-weight:bold;">◀ ▶ Cursor, ▲ ▼ History</span></div>
+          <div class="setting-row"><span>Shift</span><span style="color:#facc15;font-weight:bold;">[SHIFT] Yellow functions</span></div>
+          <div class="setting-row"><span>+, -, *, /</span><span style="color:#facc15;font-weight:bold;">Operators</span></div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Pure JavaScript Engine Entry -->
+    <script type="module" src="calsi.js"></script>
+  </body>
+</html>

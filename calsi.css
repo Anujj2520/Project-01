@@ -1,0 +1,1305 @@
+/* =========================================================
+   CALCULATOR — WEBSITE THEME
+   Dark • Glass • Neon • Modern
+   ========================================================= */
+
+:root {
+  --calc-bg: #080b14;
+  --calc-card: rgba(15, 23, 42, 0.88);
+  --calc-card-2: rgba(20, 30, 52, 0.92);
+
+  --primary: #38bdf8;
+  --primary-2: #6366f1;
+  --accent: #facc15;
+
+  --green: #22c55e;
+  --red: #ef4444;
+
+  --text: #f8fafc;
+  --muted: #94a3b8;
+
+  --border: rgba(148, 163, 184, 0.18);
+
+  --glow-blue: rgba(56, 189, 248, 0.25);
+  --glow-purple: rgba(99, 102, 241, 0.25);
+}
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 25px 12px;
+
+  font-family: "Plus Jakarta Sans", sans-serif;
+
+  color: var(--text);
+
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(56, 189, 248, 0.12),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 85% 80%,
+      rgba(99, 102, 241, 0.15),
+      transparent 30%
+    ),
+    #050811;
+}
+
+/* =========================================================
+   MAIN CALCULATOR
+   ========================================================= */
+
+.calc-chassis {
+  position: relative;
+
+  width: min(500px, 100%);
+
+  padding: 22px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 26px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15, 23, 42, 0.96),
+      rgba(7, 12, 25, 0.96)
+    );
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.65),
+    0 0 45px rgba(56, 189, 248, 0.08);
+
+  backdrop-filter: blur(20px);
+
+  overflow: hidden;
+}
+
+/* Neon border glow */
+
+.calc-chassis::before {
+  content: "";
+
+  position: absolute;
+
+  inset: -2px;
+
+  border-radius: inherit;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      120deg,
+      rgba(56, 189, 248, 0.5),
+      transparent 30%,
+      transparent 70%,
+      rgba(99, 102, 241, 0.45)
+    );
+
+  opacity: 0.45;
+
+  z-index: -1;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.top-strip {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 2px 4px 18px;
+}
+
+.brand-title {
+  font-family: "Plus Jakarta Sans", sans-serif;
+
+  font-size: 24px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ffffff,
+      #38bdf8
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.model-title {
+  margin-top: 4px;
+
+  color: var(--muted);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+.model-title span {
+  color: var(--primary);
+
+  font-size: 8px;
+}
+
+/* =========================================================
+   SOLAR PANEL
+   ========================================================= */
+
+.solar-panel {
+  width: 105px;
+
+  padding: 7px;
+
+  border: 1px solid rgba(56, 189, 248, 0.25);
+
+  border-radius: 8px;
+
+  background:
+    rgba(2, 6, 23, 0.75);
+
+  box-shadow:
+    inset 0 0 15px rgba(56, 189, 248, 0.05);
+}
+
+.solar-cells {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 2px;
+
+  height: 25px;
+}
+
+.solar-cell {
+  border: 1px solid #172554;
+
+  border-radius: 2px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #172554,
+      #0f172a
+    );
+}
+
+.solar-label {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #64748b;
+
+  text-align: center;
+
+  font-family: monospace;
+
+  font-size: 6px;
+}
+
+/* =========================================================
+   LCD
+   ========================================================= */
+
+.lcd-bezel {
+  padding: 9px;
+
+  margin-bottom: 18px;
+
+  border: 1px solid rgba(56, 189, 248, 0.22);
+
+  border-radius: 15px;
+
+  background:
+    rgba(2, 6, 23, 0.8);
+
+  box-shadow:
+    0 0 25px rgba(56, 189, 248, 0.08),
+    inset 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.lcd-screen {
+  min-height: 110px;
+
+  padding: 10px 12px;
+
+  border: 1px solid rgba(74, 222, 128, 0.3);
+
+  border-radius: 9px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #17251f,
+      #0c1714
+    );
+
+  color: #9affb7;
+
+  font-family: "JetBrains Mono", monospace;
+
+  box-shadow:
+    inset 0 0 20px rgba(34, 197, 94, 0.08),
+    0 0 18px rgba(34, 197, 94, 0.05);
+}
+
+.lcd-indicators {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  min-height: 18px;
+
+  font-size: 8px;
+}
+
+.indicator-tags {
+  display: flex;
+
+  gap: 6px;
+}
+
+.ind-badge {
+  font-family: monospace;
+
+  font-size: 8px;
+}
+
+.ind-badge.active {
+  color: #86efac;
+
+  text-shadow:
+    0 0 8px rgba(34, 197, 94, 0.6);
+}
+
+.ind-badge.inactive {
+  opacity: 0.2;
+}
+
+.lcd-expr-line {
+  min-height: 37px;
+
+  display: flex;
+
+  align-items: center;
+
+  color: #b8ffc9;
+
+  font-size: 16px;
+
+  white-space: nowrap;
+
+  overflow-x: auto;
+}
+
+.lcd-result-line {
+  min-height: 35px;
+
+  display: flex;
+
+  justify-content: flex-end;
+
+  align-items: center;
+
+  color: #d1ffd9;
+
+  font-size: 25px;
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  overflow-x: auto;
+}
+
+.expr-cursor {
+  width: 2px;
+  height: 20px;
+
+  background: #4ade80;
+
+  animation: cursorBlink 1s infinite;
+
+  box-shadow:
+    0 0 8px #4ade80;
+}
+
+@keyframes cursorBlink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   SYSTEM BUTTON ROW
+   ========================================================= */
+
+.sys-row {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 8px;
+
+  margin-bottom: 17px;
+}
+
+/* =========================================================
+   BUTTON WRAPPER
+   ========================================================= */
+
+.btn-wrapper {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.key-shift-label,
+.key-alpha-label {
+  min-height: 11px;
+
+  margin-bottom: 3px;
+
+  font-family: "JetBrains Mono", monospace;
+
+  font-size: 7px;
+  font-weight: 700;
+
+  color: var(--accent);
+
+  white-space: nowrap;
+}
+
+.key-alpha-label {
+  color: #4ade80;
+}
+
+/* =========================================================
+   ALL BUTTONS
+   ========================================================= */
+
+.c-btn {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 36px;
+
+  border: 1px solid rgba(148, 163, 184, 0.18);
+
+  border-radius: 8px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(51, 65, 85, 0.9),
+      rgba(15, 23, 42, 0.95)
+    );
+
+  color: #e2e8f0;
+
+  font-family: "JetBrains Mono", monospace;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.35),
+    inset 0 1px rgba(255,255,255,0.05);
+
+  transition:
+    transform .12s ease,
+    border-color .12s ease,
+    box-shadow .12s ease,
+    background .12s ease;
+}
+
+.c-btn:hover {
+  border-color: rgba(56, 189, 248, 0.55);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(51, 65, 85, 1),
+      rgba(30, 41, 59, 1)
+    );
+
+  box-shadow:
+    0 0 15px rgba(56, 189, 248, 0.15);
+}
+
+.c-btn:active {
+  transform: translateY(2px) scale(.98);
+}
+
+/* =========================================================
+   PILL BUTTONS
+   ========================================================= */
+
+.c-btn-pill {
+  border-radius: 20px;
+}
+
+/* =========================================================
+   SHIFT
+   ========================================================= */
+
+.btn-shift {
+  color: var(--accent);
+
+  border-color: rgba(250, 204, 21, 0.25);
+}
+
+.btn-shift:hover {
+  border-color: rgba(250, 204, 21, 0.7);
+
+  box-shadow:
+    0 0 15px rgba(250, 204, 21, 0.15);
+}
+
+/* =========================================================
+   ALPHA
+   ========================================================= */
+
+.btn-alpha {
+  color: #4ade80;
+
+  border-color: rgba(74, 222, 128, 0.25);
+}
+
+.btn-alpha:hover {
+  border-color: rgba(74, 222, 128, 0.7);
+
+  box-shadow:
+    0 0 15px rgba(74, 222, 128, 0.15);
+}
+
+/* =========================================================
+   NAVIGATION CLUSTER
+   ========================================================= */
+
+.cluster-section {
+  display: grid;
+
+  grid-template-columns: 1fr 1.25fr 1fr;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 17px;
+}
+
+.cluster-left,
+.cluster-right {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+/* =========================================================
+   DPAD
+   ========================================================= */
+
+.dpad-container {
+  position: relative;
+
+  width: 88px;
+  height: 88px;
+
+  margin: auto;
+
+  border: 1px solid rgba(56, 189, 248, 0.25);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      #263449 0%,
+      #131c2b 60%,
+      #080d17 100%
+    );
+
+  box-shadow:
+    0 0 25px rgba(56, 189, 248, 0.08),
+    inset 0 0 15px rgba(0,0,0,.7);
+}
+
+.dpad-arrow,
+.dpad-ok {
+  position: absolute;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #cbd5e1;
+
+  cursor: pointer;
+}
+
+.dpad-arrow:hover {
+  color: var(--primary);
+
+  text-shadow:
+    0 0 10px var(--primary);
+}
+
+.dpad-up {
+  top: 5px;
+  left: 28px;
+}
+
+.dpad-down {
+  bottom: 5px;
+  left: 28px;
+}
+
+.dpad-left {
+  left: 5px;
+  top: 28px;
+}
+
+.dpad-right {
+  right: 5px;
+  top: 28px;
+}
+
+.dpad-ok {
+  top: 26px;
+  left: 26px;
+
+  width: 36px;
+  height: 36px;
+
+  border: 1px solid rgba(56,189,248,.3);
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #334155,
+      #111827
+    );
+
+  color: #f8fafc;
+
+  font-size: 9px;
+
+  box-shadow:
+    0 0 12px rgba(56,189,248,.08);
+}
+
+/* =========================================================
+   FUNCTION GRID
+   ========================================================= */
+
+.func-grid {
+  display: grid;
+
+  grid-template-columns: repeat(6, 1fr);
+
+  gap: 7px;
+
+  margin-bottom: 10px;
+}
+
+/* =========================================================
+   NUMBER PAD
+   ========================================================= */
+
+.num-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 8px;
+}
+
+.c-btn-num {
+  min-height: 43px;
+
+  font-size: 14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(30, 41, 59, 1),
+      rgba(15, 23, 42, 1)
+    );
+}
+
+.c-btn-action {
+  min-height: 43px;
+
+  color: #7dd3fc;
+}
+
+.c-btn-del {
+  min-height: 43px;
+
+  color: #fda4af;
+}
+
+.c-btn-ac {
+  min-height: 43px;
+
+  color: #fecaca;
+
+  border-color: rgba(239,68,68,.3);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(127,29,29,.8),
+      rgba(69,10,10,.9)
+    );
+}
+
+.c-btn-exe {
+  min-height: 43px;
+
+  color: #111827;
+
+  border-color: rgba(250,204,21,.5);
+
+  background:
+    linear-gradient(
+      145deg,
+      #fde047,
+      #eab308
+    );
+
+  box-shadow:
+    0 0 18px rgba(250,204,21,.15);
+}
+
+.c-btn-exe:hover {
+  background:
+    linear-gradient(
+      145deg,
+      #fef08a,
+      #facc15
+    );
+
+  box-shadow:
+    0 0 25px rgba(250,204,21,.3);
+}
+
+/* =========================================================
+   BOTTOM ACCENT
+   ========================================================= */
+
+.calc-chassis > div[style*="opacity"] {
+  margin-top: 8px;
+
+  opacity: 1 !important;
+}
+
+.calc-chassis > div[style*="opacity"] > div {
+  width: 70px !important;
+  height: 3px !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--primary),
+      var(--primary-2)
+    ) !important;
+
+  box-shadow:
+    0 0 12px rgba(56,189,248,.6);
+}
+
+/* =========================================================
+   MODALS
+   ========================================================= */
+
+.modal-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 999;
+
+  width: min(480px, calc(100% - 20px));
+
+  max-height: 90vh;
+
+  margin: auto;
+
+  display: flex;
+
+  flex-direction: column;
+
+  border: 1px solid rgba(56,189,248,.3);
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15,23,42,.98),
+      rgba(5,10,20,.98)
+    );
+
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.75),
+    0 0 40px rgba(56,189,248,.1);
+
+  backdrop-filter: blur(20px);
+
+  overflow: hidden;
+
+  animation: modalIn .18s ease;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(.95) translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-overlay::before {
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: -1;
+
+  background: rgba(0,0,0,.72);
+
+  backdrop-filter: blur(5px);
+}
+
+/* =========================================================
+   MODAL HEADER
+   ========================================================= */
+
+.modal-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 13px 15px;
+
+  border-bottom: 1px solid var(--border);
+
+  background:
+    rgba(15,23,42,.95);
+}
+
+.modal-title {
+  color: #f8fafc;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: .5px;
+}
+
+.modal-close-btn {
+  padding: 5px 9px;
+
+  border: 1px solid rgba(56,189,248,.25);
+
+  border-radius: 6px;
+
+  background: #111827;
+
+  color: var(--primary);
+
+  font-family: monospace;
+
+  font-size: 9px;
+
+  cursor: pointer;
+}
+
+.modal-close-btn:hover {
+  border-color: var(--primary);
+
+  box-shadow:
+    0 0 10px rgba(56,189,248,.15);
+}
+
+/* =========================================================
+   MODAL BODY
+   ========================================================= */
+
+.modal-body {
+  padding: 14px;
+
+  overflow-y: auto;
+}
+
+.modal-body::-webkit-scrollbar {
+  width: 5px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  background: #334155;
+
+  border-radius: 10px;
+}
+
+/* =========================================================
+   MENU CARDS
+   ========================================================= */
+
+.menu-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 9px;
+}
+
+.menu-card {
+  min-height: 82px;
+
+  padding: 11px;
+
+  text-align: left;
+
+  border: 1px solid var(--border);
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(30,41,59,.9),
+      rgba(15,23,42,.9)
+    );
+
+  color: white;
+
+  cursor: pointer;
+
+  transition: .15s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(56,189,248,.55);
+
+  box-shadow:
+    0 0 18px rgba(56,189,248,.08);
+}
+
+.menu-card.active {
+  border-color: var(--primary);
+
+  box-shadow:
+    inset 0 0 15px rgba(56,189,248,.06),
+    0 0 15px rgba(56,189,248,.08);
+}
+
+.menu-card-title {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #f8fafc;
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.menu-card-desc {
+  color: var(--muted);
+
+  font-size: 8px;
+
+  line-height: 1.5;
+}
+
+/* =========================================================
+   MODAL BUTTON
+   ========================================================= */
+
+.calc-btn-primary {
+  width: 100%;
+
+  padding: 10px;
+
+  border: 1px solid rgba(56,189,248,.3);
+
+  border-radius: 8px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(37,99,235,.8),
+      rgba(79,70,229,.8)
+    );
+
+  color: white;
+
+  font-family: "JetBrains Mono", monospace;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 0 15px rgba(59,130,246,.12);
+}
+
+.calc-btn-primary:hover {
+  box-shadow:
+    0 0 25px rgba(59,130,246,.25);
+}
+
+/* =========================================================
+   SETTINGS
+   ========================================================= */
+
+.setting-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 11px 0;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.setting-row:last-child {
+  border-bottom: none;
+}
+
+.btn-group {
+  display: flex;
+
+  gap: 4px;
+}
+
+.btn-choice {
+  padding: 7px 9px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 6px;
+
+  background: #111827;
+
+  color: var(--muted);
+
+  font-family: monospace;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.btn-choice:hover,
+.btn-choice.active {
+  border-color: var(--primary);
+
+  background: rgba(56,189,248,.12);
+
+  color: var(--primary);
+
+  box-shadow:
+    0 0 10px rgba(56,189,248,.08);
+}
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+.modal-input {
+  width: 100%;
+
+  margin-bottom: 8px;
+
+  padding: 9px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 7px;
+
+  outline: none;
+
+  background: #080d18;
+
+  color: #f8fafc;
+
+  font-family: monospace;
+
+  font-size: 10px;
+}
+
+.modal-input:focus {
+  border-color: var(--primary);
+
+  box-shadow:
+    0 0 12px rgba(56,189,248,.12);
+}
+
+.modal-input::placeholder {
+  color: #64748b;
+}
+
+/* =========================================================
+   VARIABLE GRID
+   ========================================================= */
+
+.var-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 7px;
+}
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+#table-output {
+  margin-top: 8px;
+
+  border-radius: 7px;
+
+  overflow: auto;
+}
+
+#table-output table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  font-family: monospace;
+
+  font-size: 9px;
+}
+
+#table-output th,
+#table-output td {
+  padding: 7px;
+
+  border: 1px solid var(--border);
+
+  text-align: center;
+}
+
+#table-output th {
+  color: var(--primary);
+
+  background: #172033;
+}
+
+#table-output td {
+  background: #0d1422;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  body {
+    padding: 8px 4px;
+
+    align-items: flex-start;
+  }
+
+  .calc-chassis {
+    width: 100%;
+
+    padding: 15px 10px;
+
+    border-radius: 20px;
+  }
+
+  .brand-title {
+    font-size: 20px;
+  }
+
+  .model-title {
+    font-size: 8px;
+  }
+
+  .solar-panel {
+    width: 88px;
+  }
+
+  .sys-row {
+    gap: 5px;
+  }
+
+  .func-grid {
+    gap: 4px;
+  }
+
+  .num-grid {
+    gap: 5px;
+  }
+
+  .c-btn {
+    min-height: 33px;
+
+    font-size: 8px;
+  }
+
+  .c-btn-num,
+  .c-btn-action,
+  .c-btn-del,
+  .c-btn-ac,
+  .c-btn-exe {
+    min-height: 40px;
+  }
+
+  .c-btn-num {
+    font-size: 13px;
+  }
+
+  .cluster-section {
+    gap: 6px;
+  }
+
+  .dpad-container {
+    width: 78px;
+    height: 78px;
+  }
+
+  .dpad-up,
+  .dpad-down {
+    left: 23px;
+  }
+
+  .dpad-left,
+  .dpad-right {
+    top: 23px;
+  }
+
+  .dpad-ok {
+    top: 22px;
+    left: 22px;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-overlay {
+    width: calc(100% - 14px);
+  }
+}
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .calc-chassis {
+    padding: 12px 7px;
+  }
+
+  .func-grid {
+    gap: 3px;
+  }
+
+  .num-grid {
+    gap: 4px;
+  }
+
+  .sys-row {
+    gap: 3px;
+  }
+
+  .c-btn {
+    min-height: 30px;
+
+    font-size: 7px;
+  }
+
+  .c-btn-num,
+  .c-btn-action,
+  .c-btn-del,
+  .c-btn-ac,
+  .c-btn-exe {
+    min-height: 36px;
+  }
+
+  .key-shift-label,
+  .key-alpha-label {
+    font-size: 6px;
+  }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--primary);
+
+  outline-offset: 2px;
+}
