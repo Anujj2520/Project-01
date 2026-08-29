@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Student Portfolio Dashboard</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="dashboard">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="logo">
+          <span>AP</span>
+          <h2>My Portfolio</h2>
+        </div>
+
+        <!-- Profile -->
+        <div class="side-profile">
+          <div class="profile-image">👨‍💻</div>
+
+          <h3>Anuj</h3>
+          <p>Engineering Student</p>
+        </div>
+
+        <!-- Menu -->
+        <nav>
+          <button class="menu-btn active" onclick="showSection('home', this)">
+            🏠
+            <span>Introduction</span>
+          </button>
+
+          <button class="menu-btn" onclick="showSection('qualification', this)">
+            🎓
+            <span>Qualification</span>
+          </button>
+
+          <button class="menu-btn" onclick="showSection('skills', this)">
+            💻
+            <span>Skills</span>
+          </button>
+
+          <button class="menu-btn" onclick="showSection('projects', this)">
+            🚀
+            <span>Projects</span>
+          </button>
+
+          <button class="menu-btn" onclick="showSection('profile', this)">
+            👤
+            <span>Profile</span>
+          </button>
+
+          <button class="menu-btn" onclick="showSection('settings', this)">
+            ⚙️
+            <span>Settings</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <p>© 2026 My Portfolio</p>
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main class="main-content">
+        <!-- TOP BAR -->
+        <header class="topbar">
+          <div>
+            <h2>Dashboard</h2>
+            <p>Welcome to my portfolio</p>
+          </div>
+
+          <div class="top-profile">🔔 &nbsp; 👤</div>
+        </header>
+
+        <!-- INTRODUCTION -->
+        <section id="home" class="section active">
+          <div class="hero">
+            <div class="hero-text">
+              <p class="small-title">WELCOME TO MY PORTFOLIO</p>
+
+              <h1>Hello, I'm <span>Anuj</span> 👋</h1>
+
+              <p>
+                I am an Electronics and Telecommunication Engineering student
+                who is interested in programming, web development, robotics and
+                modern technology.
+              </p>
+
+              <div class="buttons">
+                <button onclick="showSection('profile')">View Profile</button>
+
+                <button class="outline" onclick="showSection('skills')">
+                  My Skills
+                </button>
+              </div>
+            </div>
+
+            <div class="hero-image">👨‍💻</div>
+          </div>
+
+          <!-- Quick Stats -->
+
+          <div class="stats">
+            <div class="stat-card">
+              <div class="stat-icon">🎓</div>
+              <h2>Engineering</h2>
+              <p>Education</p>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">💻</div>
+              <h2>5+</h2>
+              <p>Technical Skills</p>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">🚀</div>
+              <h2>4+</h2>
+              <p>Projects</p>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">📚</div>
+              <h2>2026</h2>
+              <p>Current Year</p>
+            </div>
+          </div>
+
+          <!-- About -->
+
+          <div class="info-grid">
+            <div class="info-card">
+              <h2>About Me</h2>
+
+              <p>
+                I am passionate about learning new technologies and developing
+                useful projects. I enjoy working with HTML, CSS, JavaScript,
+                Python and robotics.
+              </p>
+
+              <p>
+                My goal is to continuously improve my technical knowledge and
+                build real-world applications.
+              </p>
+            </div>
+
+            <div class="info-card">
+              <h2>My Interests</h2>
+
+              <ul class="interest-list">
+                <li>🌐 Web Development</li>
+                <li>🤖 Robotics</li>
+                <li>💻 Programming</li>
+                <li>📡 Electronics</li>
+                <li>🧠 Artificial Intelligence</li>
+                <li>🔧 Embedded Systems</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- QUALIFICATION -->
+
+        <section id="qualification" class="section">
+          <div class="section-heading">
+            <p>MY EDUCATION</p>
+
+            <h1>Qualification</h1>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-icon">🎓</div>
+
+              <div class="timeline-content">
+                <span>2026 - Present</span>
+
+                <h2>Bachelor of Engineering</h2>
+
+                <h3>Electronics & Telecommunication</h3>
+
+                <p>
+                  Currently pursuing engineering with interest in electronics,
+                  programming, communication systems and technology.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-icon">📖</div>
+
+              <div class="timeline-content">
+                <span>Higher Secondary Education</span>
+
+                <h2>12th Standard</h2>
+
+                <h3>Science Stream</h3>
+
+                <p>
+                  Studied Physics, Chemistry, Mathematics and other core
+                  subjects.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-icon">🏫</div>
+
+              <div class="timeline-content">
+                <span>Secondary Education</span>
+
+                <h2>10th Standard</h2>
+
+                <p>
+                  Completed secondary school education with a strong interest in
+                  science and technology.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SKILLS -->
+
+        <section id="skills" class="section">
+          <div class="section-heading">
+            <p>WHAT I KNOW</p>
+
+            <h1>My Skills</h1>
+          </div>
+
+          <div class="skills-container">
+            <div class="skill-card">
+              <div class="skill-top">
+                <span>🌐 HTML</span>
+                <b>90%</b>
+              </div>
+
+              <div class="progress">
+                <div class="progress-bar html"></div>
+              </div>
+
+              <p>Web Page Structure</p>
+            </div>
+
+            <div class="skill-card">
+              <div class="skill-top">
+                <span>🎨 CSS</span>
+                <b>85%</b>
+              </div>
+
+              <div class="progress">
+                <div class="progress-bar css"></div>
+              </div>
+
+              <p>Web Page Design</p>
+            </div>
+
+            <div class="skill-card">
+              <div class="skill-top">
+                <span>⚡ JavaScript</span>
+                <b>70%</b>
+              </div>
+
+              <div class="progress">
+                <div class="progress-bar javascript"></div>
+              </div>
+
+              <p>Web Interactivity</p>
+            </div>
+
+            <div class="skill-card">
+              <div class="skill-top">
+                <span>🐍 Python</span>
+                <b>75%</b>
+              </div>
+
+              <div class="progress">
+                <div class="progress-bar python"></div>
+              </div>
+
+              <p>Programming & Automation</p>
+            </div>
+
+            <div class="skill-card">
+              <div class="skill-top">
+                <span>⚙️ C / C++</span>
+                <b>65%</b>
+              </div>
+
+              <div class="progress">
+                <div class="progress-bar cpp"></div>
+              </div>
+
+              <p>Programming & Embedded Systems</p>
+            </div>
+
+            <div class="skill-card">
+              <div class="skill-top">
+                <span>🤖 Robotics</span>
+                <b>70%</b>
+              </div>
+
+              <div class="progress">
+                <div class="progress-bar robotics"></div>
+              </div>
+
+              <p>Robotics & Control Systems</p>
+            </div>
+          </div>
+
+          <div class="tools">
+            <h2>Tools I Use</h2>
+
+            <div class="tool-list">
+              <span>VS Code</span>
+              <span>Git</span>
+              <span>GitHub</span>
+              <span>CoppeliaSim</span>
+              <span>Python</span>
+              <span>Arduino</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROJECTS -->
+
+        <section id="projects" class="section">
+          <div class="section-heading">
+            <p>MY WORK</p>
+
+            <h1>Projects</h1>
+          </div>
+
+          <div class="project-grid">
+            <div class="project-card">
+              <div class="project-icon">🌐</div>
+
+              <h2>Portfolio Website</h2>
+
+              <p>
+                A personal portfolio website created using HTML, CSS and
+                JavaScript.
+              </p>
+
+              <div class="tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-icon">🤖</div>
+
+              <h2>Line Following Robot</h2>
+
+              <p>
+                A robotics project involving sensors, motor control and
+                PID-based line following.
+              </p>
+
+              <div class="tags">
+                <span>Python</span>
+                <span>Robotics</span>
+                <span>PID</span>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-icon">🔐</div>
+
+              <h2>Login System</h2>
+
+              <p>
+                A responsive login interface with form validation and password
+                visibility controls.
+              </p>
+
+              <div class="tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JS</span>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-icon">📊</div>
+
+              <h2>Student Dashboard</h2>
+
+              <p>
+                An interactive dashboard displaying student information, skills
+                and project details.
+              </p>
+
+              <div class="tags">
+                <span>Web</span>
+                <span>UI</span>
+                <span>JavaScript</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROFILE -->
+
+        <section id="profile" class="section">
+          <div class="section-heading">
+            <p>PERSONAL INFORMATION</p>
+
+            <h1>My Profile</h1>
+          </div>
+
+          <div class="profile-details">
+            <div class="profile-big">
+              <div class="big-avatar">👨‍💻</div>
+
+              <h2>Anuj</h2>
+
+              <p>Engineering Student</p>
+            </div>
+
+            <div class="details">
+              <div class="detail">
+                <span>👤 Full Name</span>
+                <b>Anuj</b>
+              </div>
+
+              <div class="detail">
+                <span>🎓 Education</span>
+                <b>Engineering Student</b>
+              </div>
+
+              <div class="detail">
+                <span>📡 Branch</span>
+                <b>Electronics & Telecommunication</b>
+              </div>
+
+              <div class="detail">
+                <span>💻 Field</span>
+                <b>Technology & Programming</b>
+              </div>
+
+              <div class="detail">
+                <span>🌐 Interest</span>
+                <b>Web Development</b>
+              </div>
+
+              <div class="detail">
+                <span>🚀 Goal</span>
+                <b>Become a skilled engineer</b>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SETTINGS -->
+
+        <section id="settings" class="section">
+          <div class="section-heading">
+            <p>PERSONALIZE YOUR EXPERIENCE</p>
+
+            <h1>Settings</h1>
+          </div>
+
+          <div class="settings-box">
+            <div class="setting-item">
+              <div>
+                <h3>🌙 Dark Mode</h3>
+                <p>Change the appearance of the dashboard.</p>
+              </div>
+
+              <label class="switch">
+                <input type="checkbox" id="darkMode" />
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="setting-item">
+              <div>
+                <h3>🔔 Notifications</h3>
+                <p>Receive notifications and updates.</p>
+              </div>
+
+              <label class="switch">
+                <input type="checkbox" checked />
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="setting-item">
+              <div>
+                <h3>🔐 Remember Login</h3>
+                <p>Keep your login information saved.</p>
+              </div>
+
+              <label class="switch">
+                <input type="checkbox" />
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <button class="save-btn" onclick="saveSettings()">
+              Save Settings
+            </button>
+
+            <p id="message"></p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <button id="backButton" class="back-btn">←</button>
+    <script src="menu.js"></script>
+  </body>
+</html>

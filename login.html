@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ECE Login | Anuj Jaiswal</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         BACK BUTTON
+    ========================================== -->
+
+    <button id="backButton" class="back-btn" type="button">
+        <span class="back-arrow">←</span>
+        <span>Back</span>
+    </button>
+
+
+    <!-- =========================================
+         ELECTRONIC BACKGROUND
+    ========================================== -->
+
+    <div class="circuit circuit-1"></div>
+    <div class="circuit circuit-2"></div>
+    <div class="circuit circuit-3"></div>
+
+    <div class="circuit circuit-4"></div>
+
+
+    <!-- Electronic Chips -->
+
+    <div class="chip chip-1">
+        ECE
+    </div>
+
+    <div class="chip chip-2">
+        IC
+    </div>
+
+    <div class="chip chip-3">
+        CPU
+    </div>
+
+
+    <!-- Electronic Nodes -->
+
+    <div class="node node-1"></div>
+    <div class="node node-2"></div>
+    <div class="node node-3"></div>
+    <div class="node node-4"></div>
+    <div class="node node-5"></div>
+
+
+    <!-- =========================================
+         LOGIN CONTAINER
+    ========================================== -->
+
+    <main class="login-container">
+
+        <div class="login-box">
+
+
+            <!-- =================================
+                 ELECTRONIC ICON
+            ================================== -->
+
+            <div class="electronics-icon">
+
+                <div class="chip-symbol">
+                    ⚡
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 HEADING
+            ================================== -->
+
+            <h1>
+                Welcome Back
+            </h1>
+
+            <p class="subtitle">
+                Electronics & Telecommunication Portal
+            </p>
+
+
+            <!-- =================================
+                 LOGIN FORM
+            ================================== -->
+
+            <form id="loginForm">
+
+
+                <!-- EMAIL -->
+
+                <div class="input-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <div class="input-box">
+
+                        <span class="input-icon">
+                            ✉
+                        </span>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter your email"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="input-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="input-box">
+
+                        <span class="input-icon">
+                            🔐
+                        </span>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+
+                        <!-- PASSWORD VIEW BUTTON -->
+
+                        <button
+                            type="button"
+                            id="togglePassword"
+                            class="eye-btn"
+                            aria-label="Show password"
+                        >
+                            👁
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     OPTIONS
+                ================================== -->
+
+                <div class="options">
+
+                    <label class="remember">
+
+                        <input
+                            type="checkbox"
+                            id="remember"
+                        >
+
+                        <span>
+                            Remember me
+                        </span>
+
+                    </label>
+
+
+                    <a href="#" id="forgotPassword">
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+
+                <!-- =================================
+                     LOGIN BUTTON
+                ================================== -->
+
+                <button
+                    type="submit"
+                    class="login-btn"
+                    id="loginButton"
+                >
+
+                    <span>
+                        Login
+                    </span>
+
+                    <span class="login-arrow">
+                        →
+                    </span>
+
+                </button>
+
+            </form>
+
+
+            <!-- =================================
+                 MESSAGE
+            ================================== -->
+
+            <p
+                id="message"
+                class="message"
+                aria-live="polite"
+            ></p>
+
+
+            <!-- =================================
+                 SIGN UP
+            ================================== -->
+
+            <p class="signup">
+
+                Don't have an account?
+
+                <a href="acount.html">
+                    Create Account
+                </a>
+
+            </p>
+
+
+            <!-- =================================
+                 FOOTER
+            ================================== -->
+
+            <div class="login-footer">
+
+                <span>
+                    ⚙
+                </span>
+
+                <p>
+                    ECE • Technology • Innovation
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="login.js"></script>
+
+</body>
+
+</html>

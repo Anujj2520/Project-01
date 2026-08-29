@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact | Anuj Jaiswal</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="logo">
+            AJ
+        </div>
+
+        <div>
+            <h2>Help line</h2>
+            <p>Let's connect and work together</p>
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="contact-container">
+
+
+        <!-- LEFT SIDE -->
+
+        <section class="contact-info">
+
+            <div class="section-label">
+                GET IN TOUCH
+            </div>
+
+            <h1>
+                Let's start a
+                <span>conversation.</span>
+            </h1>
+
+            <p class="intro">
+                Have a project idea, question, or opportunity?
+                Feel free to reach out. I will be happy to hear
+                from you and discuss how we can work together.
+            </p>
+
+
+            <!-- Phone -->
+
+            <a href="tel:9369444908" class="info-card">
+
+                <div class="icon">
+                    📞
+                </div>
+
+                <div>
+                    <span>PHONE</span>
+                    <h3>+91 9369444908</h3>
+                    <p>Available for calls</p>
+                </div>
+
+                <strong>→</strong>
+
+            </a>
+
+
+            <!-- Email -->
+
+            <a href="mailto:anujjaiswal2520@gmail.com"
+               class="info-card">
+
+                <div class="icon">
+                    ✉️
+                </div>
+
+                <div>
+                    <span>EMAIL</span>
+                    <h3>anujjaiswal2520@gmail.com</h3>
+                    <p>Send me an email anytime</p>
+                </div>
+
+                <strong>→</strong>
+
+            </a>
+
+
+            <!-- Address -->
+
+            <div class="info-card">
+
+                <div class="icon">
+                    📍
+                </div>
+
+                <div>
+                    <span>LOCATION</span>
+
+                    <h3>Mumbai, Maharashtra</h3>
+
+                    <p>
+                        24, Sunrise Apartments,<br>
+                        Andheri East,<br>
+                        Mumbai - 400069
+                    </p>
+
+                    <small>
+                        *Fictional address for demonstration
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- Availability -->
+
+            <div class="availability">
+
+                <span class="online"></span>
+
+                <div>
+                    <strong>Currently available</strong>
+
+                    <p>
+                        Open to learning opportunities,
+                        projects and collaborations.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- RIGHT SIDE -->
+
+        <section class="form-container">
+
+            <div class="form-header">
+
+                <div class="form-icon">
+                    ✉
+                </div>
+
+                <div>
+                    <h2>Send a Message</h2>
+
+                    <p>
+                        Fill out the form and I'll get back to you.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <form id="contactForm" novalidate>
+
+
+                <!-- Name -->
+
+                <div class="input-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                    >
+
+                    <small class="error"
+                           id="nameError">
+                    </small>
+
+                </div>
+
+
+                <!-- Email -->
+
+                <div class="input-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                    >
+
+                    <small class="error"
+                           id="emailError">
+                    </small>
+
+                </div>
+
+
+                <!-- Subject -->
+
+                <div class="input-group">
+
+                    <label for="subject">
+                        Subject
+                    </label>
+
+                    <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        placeholder="What would you like to discuss?"
+                    >
+
+                    <small class="error"
+                           id="subjectError">
+                    </small>
+
+                </div>
+
+
+                <!-- Message -->
+
+                <div class="input-group">
+
+                    <div class="message-label">
+
+                        <label for="message">
+                            Message
+                        </label>
+
+                        <span id="counter">
+                            0 / 500
+                        </span>
+
+                    </div>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        maxlength="500"
+                        rows="6"
+                        placeholder="Write your message here..."
+                    ></textarea>
+
+                    <small class="error"
+                           id="messageError">
+                    </small>
+
+                </div>
+
+
+                <!-- Submit -->
+
+                <button
+                    type="submit"
+                    id="submitButton">
+
+                    <span id="buttonText">
+                        Send Message
+                    </span>
+
+                    <span id="buttonIcon">
+                        →
+                    </span>
+
+                </button>
+
+
+                <!-- Success Message -->
+
+                <div
+                    id="successMessage"
+                    class="success-message">
+
+                    <span>✓</span>
+
+                    <div>
+                        <strong>Message ready!</strong>
+
+                        <p>
+                            Your message has passed validation.
+                        </p>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Anuj Jaiswal. All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <script src="contact.js"></script>
+
+</body>
+
+</html>

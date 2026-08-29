@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | Anuj Jaiswal</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ELECTRONIC BACKGROUND -->
+    <div class="circuit circuit-1"></div>
+    <div class="circuit circuit-2"></div>
+    <div class="circuit circuit-3"></div>
+
+    <div class="chip chip-1">ECE</div>
+    <div class="chip chip-2">IC</div>
+    <div class="chip chip-3">CPU</div>
+
+    <div class="node node-1"></div>
+    <div class="node node-2"></div>
+    <div class="node node-3"></div>
+
+
+    <!-- BACK BUTTON -->
+    <button
+        id="backButton"
+        class="back-btn"
+        type="button"
+    >
+        ← <span>Back</span>
+    </button>
+
+
+    <!-- MAIN -->
+    <main class="account-container">
+
+        <div class="account-box">
+
+            <!-- HEADER -->
+
+            <div class="electronics-icon">
+                ⚡
+            </div>
+
+            <h1>Create Account</h1>
+
+            <p class="subtitle">
+                Create your professional ECE profile
+            </p>
+
+
+            <!-- FORM -->
+
+            <form id="createAccountForm" novalidate>
+
+
+                <!-- =================================
+                     PROFILE PHOTO
+                ================================== -->
+
+                <div class="photo-section">
+
+                    <div class="profile-preview">
+
+                        <span id="photoPlaceholder">
+                            👤
+                        </span>
+
+                        <img
+                            id="profileImage"
+                            src=""
+                            alt="Profile Preview"
+                        >
+
+                    </div>
+
+                    <div class="photo-content">
+
+                        <h3>Profile Photo</h3>
+
+                        <p>
+                            Upload a professional photo
+                        </p>
+
+                        <label
+                            for="profilePhoto"
+                            class="upload-btn"
+                        >
+                            Choose Photo
+                        </label>
+
+                        <input
+                            type="file"
+                            id="profilePhoto"
+                            accept="image/png,image/jpeg,image/jpg"
+                            hidden
+                        >
+
+                        <small>
+                            JPG/PNG • Maximum 2 MB
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     PERSONAL INFORMATION
+                ================================== -->
+
+                <section class="form-section">
+
+                    <div class="section-title">
+
+                        <span>01</span>
+
+                        <div>
+                            <h2>Personal Information</h2>
+                            <p>Basic information</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Full Name *</label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter your full name"
+                            required
+                        >
+
+                        <small
+                            id="nameError"
+                            class="error"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="verification-row">
+
+                        <div class="input-group">
+
+                            <label>Email Address *</label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="example@gmail.com"
+                                required
+                            >
+
+                        </div>
+
+                        <button
+                            type="button"
+                            id="emailOtpBtn"
+                            class="verify-btn"
+                        >
+                            Verify Email
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="emailVerified"
+                        class="verified hidden"
+                    >
+                        ✓ Email Verified
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div class="verification-row">
+
+                        <div class="input-group">
+
+                            <label>Mobile Number *</label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                maxlength="10"
+                                placeholder="10 digit mobile number"
+                                required
+                            >
+
+                        </div>
+
+                        <button
+                            type="button"
+                            id="phoneOtpBtn"
+                            class="verify-btn"
+                        >
+                            Verify Mobile
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="phoneVerified"
+                        class="verified hidden"
+                    >
+                        ✓ Mobile Verified
+                    </div>
+
+                </section>
+
+
+                <!-- =================================
+                     EDUCATION
+                ================================== -->
+
+                <section class="form-section">
+
+                    <div class="section-title">
+
+                        <span>02</span>
+
+                        <div>
+                            <h2>Education Details</h2>
+                            <p>Academic information</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="input-group">
+
+                            <label>Degree *</label>
+
+                            <select id="degree">
+
+                                <option value="">
+                                    Select Degree
+                                </option>
+
+                                <option>
+                                    Bachelor of Engineering
+                                </option>
+
+                                <option>
+                                    Bachelor of Technology
+                                </option>
+
+                                <option>
+                                    Diploma
+                                </option>
+
+                                <option>
+                                    Master of Engineering
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>Branch *</label>
+
+                            <select id="branch">
+
+                                <option value="">
+                                    Select Branch
+                                </option>
+
+                                <option>
+                                    Electronics & Telecommunication
+                                </option>
+
+                                <option>
+                                    Electronics & Communication
+                                </option>
+
+                                <option>
+                                    Computer Engineering
+                                </option>
+
+                                <option>
+                                    Information Technology
+                                </option>
+
+                                <option>
+                                    Electrical Engineering
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Institute / College *</label>
+
+                        <input
+                            type="text"
+                            id="institute"
+                            placeholder="Enter institute name"
+                        >
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="input-group">
+
+                            <label>Current CGPA *</label>
+
+                            <input
+                                type="number"
+                                id="cgpa"
+                                min="0"
+                                max="10"
+                                step="0.01"
+                                placeholder="e.g. 8.50"
+                            >
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>Current Year *</label>
+
+                            <select id="currentYear">
+
+                                <option value="">
+                                    Select Year
+                                </option>
+
+                                <option>1st Year</option>
+                                <option>2nd Year</option>
+                                <option>3rd Year</option>
+                                <option>4th Year</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Expected Passing Year *
+                        </label>
+
+                        <select id="passingYear">
+
+                            <option value="">
+                                Select Year
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================
+                     ADDRESS
+                ================================== -->
+
+                <section class="form-section">
+
+                    <div class="section-title">
+
+                        <span>03</span>
+
+                        <div>
+                            <h2>Address</h2>
+                            <p>Residential information</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Complete Address *</label>
+
+                        <textarea
+                            id="address"
+                            maxlength="250"
+                            placeholder="Enter your complete address"
+                        ></textarea>
+
+                        <div class="counter">
+                            <span id="addressCount">0</span>/250
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="input-group">
+
+                            <label>City *</label>
+
+                            <input
+                                type="text"
+                                id="city"
+                                placeholder="Mumbai"
+                            >
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>State *</label>
+
+                            <input
+                                type="text"
+                                id="state"
+                                placeholder="Maharashtra"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================
+                     SECURITY
+                ================================== -->
+
+                <section class="form-section">
+
+                    <div class="section-title">
+
+                        <span>04</span>
+
+                        <div>
+                            <h2>Account Security</h2>
+                            <p>Create a secure password</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Password *</label>
+
+                        <div class="password-box">
+
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="Create password"
+                            >
+
+                            <button
+                                type="button"
+                                id="togglePassword"
+                            >
+                                👁
+                            </button>
+
+                        </div>
+
+
+                        <div class="strength">
+
+                            <div class="strength-bar">
+
+                                <span
+                                    id="strengthFill"
+                                ></span>
+
+                            </div>
+
+                            <span id="strengthText">
+                                Password strength
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Confirm Password *</label>
+
+                        <div class="password-box">
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                placeholder="Confirm password"
+                            >
+
+                            <button
+                                type="button"
+                                id="toggleConfirmPassword"
+                            >
+                                👁
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- TERMS -->
+
+                <label class="terms">
+
+                    <input
+                        type="checkbox"
+                        id="terms"
+                    >
+
+                    <span>
+                        I confirm that the information provided
+                        is correct and I agree to the
+                        <a href="#">Terms & Conditions</a>.
+                    </span>
+
+                </label>
+
+
+                <!-- CREATE -->
+
+                <button
+                    type="submit"
+                    id="createBtn"
+                    class="create-btn"
+                >
+                    Create Account →
+                </button>
+
+
+                <p
+                    id="message"
+                    class="message"
+                ></p>
+
+            </form>
+
+
+            <!-- LOGIN -->
+
+            <p class="login-link">
+
+                Already have an account?
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </p>
+
+
+            <div class="footer">
+                ⚙ ECE • Technology • Innovation
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =================================
+         OTP MODAL
+    ================================== -->
+
+    <div
+        id="otpModal"
+        class="modal hidden"
+    >
+
+        <div class="otp-box">
+
+            <button
+                id="closeOtp"
+                class="close-btn"
+            >
+                ×
+            </button>
+
+            <div class="otp-icon">
+                🔐
+            </div>
+
+            <h2>Verify OTP</h2>
+
+            <p id="otpDescription">
+                Enter the 6-digit OTP
+            </p>
+
+            <div class="otp-inputs">
+
+                <input maxlength="1" class="otp">
+                <input maxlength="1" class="otp">
+                <input maxlength="1" class="otp">
+                <input maxlength="1" class="otp">
+                <input maxlength="1" class="otp">
+                <input maxlength="1" class="otp">
+
+            </div>
+
+            <p
+                id="demoOtp"
+                class="demo-otp"
+            ></p>
+
+            <button
+                id="verifyOtp"
+                class="otp-submit"
+            >
+                Verify OTP
+            </button>
+
+            <div class="otp-footer">
+
+                <span id="timer">
+                    60
+                </span>
+
+                seconds
+
+                <button
+                    id="resendOtp"
+                    disabled
+                >
+                    Resend OTP
+                </button>
+
+            </div>
+
+            <p
+                id="otpMessage"
+                class="otp-message"
+            ></p>
+
+        </div>
+
+    </div>
+
+
+    <script src="create-account.js"></script>
+
+</body>
+
+</html>

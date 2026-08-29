@@ -1,0 +1,756 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   BODY
+========================================= */
+
+body {
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #1e293b,
+            #0b1120 45%
+        );
+
+    color: #e5e7eb;
+
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+    height: 85px;
+
+    padding: 0 7%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    border-bottom: 1px solid #1e293b;
+
+    background: rgba(11, 17, 32, 0.85);
+}
+
+
+.logo {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #8b5cf6
+        );
+
+    border-radius: 12px;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 8px 25px rgba(99, 102, 241, 0.25);
+}
+
+
+.header h2 {
+    color: white;
+
+    font-size: 18px;
+}
+
+
+.header p {
+    color: #64748b;
+
+    font-size: 12px;
+
+    margin-top: 3px;
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.contact-container {
+    width: min(1200px, 90%);
+
+    margin: 70px auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 70px;
+
+    align-items: start;
+}
+
+
+/* =========================================
+   LEFT SECTION
+========================================= */
+
+.section-label {
+    color: #818cf8;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 18px;
+}
+
+
+.contact-info h1 {
+    font-size: clamp(38px, 5vw, 60px);
+
+    line-height: 1.05;
+
+    color: white;
+
+    margin-bottom: 25px;
+}
+
+
+.contact-info h1 span {
+    display: block;
+
+    background:
+        linear-gradient(
+            90deg,
+            #818cf8,
+            #c084fc
+        );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color: transparent;
+}
+
+
+.intro {
+    max-width: 540px;
+
+    color: #94a3b8;
+
+    line-height: 1.8;
+
+    font-size: 15px;
+
+    margin-bottom: 35px;
+}
+
+
+/* =========================================
+   INFORMATION CARDS
+========================================= */
+
+.info-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 20px;
+
+    margin-bottom: 14px;
+
+    text-decoration: none;
+
+    color: inherit;
+
+    background:
+        rgba(15, 23, 42, 0.7);
+
+    border: 1px solid #263247;
+
+    border-radius: 14px;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+
+.info-card:hover {
+    transform: translateX(6px);
+
+    border-color: #6366f1;
+
+    background: #111b31;
+}
+
+
+.icon {
+    min-width: 48px;
+
+    width: 48px;
+
+    height: 48px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 12px;
+
+    background: #1e1b4b;
+
+    font-size: 20px;
+}
+
+
+.info-card > div:nth-child(2) {
+    flex: 1;
+}
+
+
+.info-card span {
+    color: #6366f1;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+
+.info-card h3 {
+    color: #f8fafc;
+
+    font-size: 15px;
+
+    margin: 5px 0;
+}
+
+
+.info-card p {
+    color: #64748b;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+.info-card strong {
+    color: #64748b;
+
+    font-size: 20px;
+
+    transition: 0.2s;
+}
+
+
+.info-card:hover strong {
+    color: #818cf8;
+
+    transform: translateX(4px);
+}
+
+
+.info-card small {
+    color: #475569;
+
+    font-size: 9px;
+
+    display: block;
+
+    margin-top: 7px;
+}
+
+
+/* =========================================
+   AVAILABILITY
+========================================= */
+
+.availability {
+    display: flex;
+
+    gap: 12px;
+
+    align-items: flex-start;
+
+    margin-top: 25px;
+
+    padding: 17px;
+
+    border-radius: 12px;
+
+    background: #0f201a;
+
+    border: 1px solid #14532d;
+}
+
+
+.online {
+    width: 9px;
+
+    height: 9px;
+
+    background: #22c55e;
+
+    border-radius: 50%;
+
+    margin-top: 5px;
+
+    box-shadow:
+        0 0 10px #22c55e;
+}
+
+
+.availability strong {
+    color: #86efac;
+
+    font-size: 13px;
+}
+
+
+.availability p {
+    color: #64748b;
+
+    font-size: 11px;
+
+    margin-top: 5px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   FORM CONTAINER
+========================================= */
+
+.form-container {
+    padding: 35px;
+
+    background:
+        rgba(15, 23, 42, 0.8);
+
+    border: 1px solid #263247;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.25);
+}
+
+
+.form-header {
+    display: flex;
+
+    gap: 15px;
+
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+
+.form-icon {
+    width: 48px;
+
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #312e81;
+
+    font-size: 20px;
+}
+
+
+.form-header h2 {
+    color: white;
+
+    font-size: 22px;
+}
+
+
+.form-header p {
+    color: #64748b;
+
+    font-size: 12px;
+
+    margin-top: 5px;
+}
+
+
+/* =========================================
+   INPUT GROUP
+========================================= */
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+
+.input-group label {
+    display: block;
+
+    color: #cbd5e1;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+}
+
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+
+    padding: 14px 15px;
+
+    border: 1px solid #29364a;
+
+    border-radius: 9px;
+
+    background: #0b1120;
+
+    color: white;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    transition: 0.2s;
+}
+
+
+.input-group textarea {
+    resize: vertical;
+
+    min-height: 130px;
+}
+
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+    color: #475569;
+}
+
+
+.input-group input:focus,
+.input-group textarea:focus {
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+
+/* Error input */
+
+.input-error {
+    border-color: #ef4444 !important;
+}
+
+
+/* =========================================
+   MESSAGE COUNTER
+========================================= */
+
+.message-label {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.message-label label {
+    margin-bottom: 8px;
+}
+
+
+#counter {
+    color: #475569;
+
+    font-size: 10px;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================================
+   ERROR MESSAGE
+========================================= */
+
+.error {
+    display: block;
+
+    min-height: 16px;
+
+    color: #f87171;
+
+    font-size: 11px;
+
+    margin-top: 5px;
+}
+
+
+/* =========================================
+   SUBMIT BUTTON
+========================================= */
+
+#submitButton {
+    width: 100%;
+
+    border: none;
+
+    border-radius: 9px;
+
+    padding: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #8b5cf6
+        );
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s,
+        opacity 0.2s;
+}
+
+
+#submitButton:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(99, 102, 241, 0.25);
+}
+
+
+#submitButton:active {
+    transform: translateY(0);
+}
+
+
+#submitButton:disabled {
+    cursor: not-allowed;
+
+    opacity: 0.7;
+}
+
+
+/* =========================================
+   SUCCESS MESSAGE
+========================================= */
+
+.success-message {
+    display: none;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 18px;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    background: #052e16;
+
+    border: 1px solid #166534;
+}
+
+
+.success-message.show {
+    display: flex;
+
+    animation:
+        slideIn 0.3s ease;
+}
+
+
+.success-message > span {
+    width: 30px;
+
+    height: 30px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: #166534;
+
+    color: #86efac;
+}
+
+
+.success-message strong {
+    color: #86efac;
+
+    font-size: 13px;
+}
+
+
+.success-message p {
+    color: #64748b;
+
+    font-size: 11px;
+
+    margin-top: 3px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    text-align: center;
+
+    padding: 25px;
+
+    border-top: 1px solid #1e293b;
+
+    color: #475569;
+
+    font-size: 11px;
+}
+
+
+/* =========================================
+   ANIMATION
+========================================= */
+
+@keyframes slideIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 850px) {
+
+    .contact-container {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+
+        margin-top: 45px;
+    }
+
+    .contact-info h1 {
+        font-size: 42px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .header {
+        padding: 0 5%;
+    }
+
+    .contact-container {
+        width: 92%;
+    }
+
+    .form-container {
+        padding: 22px;
+    }
+
+    .contact-info h1 {
+        font-size: 36px;
+    }
+
+    .info-card {
+        padding: 16px;
+    }
+
+}
